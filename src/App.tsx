@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/auth/login";
-import Register from "./pages/auth/register";
+import SignUp from "./pages/auth/signup";
 import Home from "./pages/home/home";
 import PersistLogin from "./components/auth/persist-login";
 import RequireAuth from "./components/auth/require-auth";
@@ -15,8 +15,8 @@ export default function App() {
           element: <Login />,
         },
         {
-          path: "/register",
-          element: <Register />,
+          path: "/signup",
+          element: <SignUp />,
         },
         {
           element: <RequireAuth />,

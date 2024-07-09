@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useAuth from "../../hooks/useAuth";
@@ -49,8 +50,12 @@ export default function Login() {
             type="text"
             name="username"
             id="username"
-            placeholder="Enter username/email"
+            placeholder=" "
+            className="form-input"
           />
+          <label htmlFor="username" className="form-label">
+            Username/Email
+          </label>
           {errors.username && (
             <span className="error-message">{errors.username.message}</span>
           )}
@@ -61,14 +66,20 @@ export default function Login() {
             type="password"
             name="password"
             id="password"
-            placeholder="Enter password"
+            placeholder=" "
+            className="form-input"
           />
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           {errors.password && (
             <span className="error-message">{errors.password.message}</span>
           )}
         </div>
         <button>Log In</button>
-        <p>Don't have an account?</p>
+        <p>
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+        </p>
       </form>
     </div>
   );

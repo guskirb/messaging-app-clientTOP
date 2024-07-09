@@ -10,6 +10,13 @@ export const logIn = async (data: FormFields) => {
     .catch((error) => error.response.data);
 };
 
+export const registerUser = async (data: FormFields) => {
+  return axios
+    .post("/users/register", data)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
 export const getUser = async () => {
   return axios
     .get("/users/me")
