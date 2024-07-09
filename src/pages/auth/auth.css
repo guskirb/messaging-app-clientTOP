@@ -11,17 +11,31 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     border: 1px solid #d1d1d1;
     padding: 50px;
     border-radius: 10px;
+    width: 350px;
 }
 
-.auth__container > form > input {
+.auth__container > form > div {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.auth__container > form > div > input {
     height: 20px;
     border-radius: 5px;
     border: 1px solid #d1d1d1;
     padding: 5px;
+}
+
+.error-message {
+    position: absolute;
+    transform: translateY(30px);
+    color: red;
+    font-size: 0.8em;
 }
 
 .auth__container > form > button {
