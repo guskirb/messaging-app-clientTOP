@@ -1,15 +1,29 @@
 import { Outlet } from "react-router-dom";
-import useGetUser from "../../hooks/useGetUser";
+import { getUser } from "../../api/user";
 import useAuth from "../../hooks/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function PersistLogin() {
-  const { user } = useGetUser();
   const { setAuth }: any = useAuth();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setAuth(user);
+    const getAuth = async () => {
+      const user = await getUser();
+      if (user.user !== undefined) {
+        setAuth(user);
+      } else {
+        setAuth(undefined);
+      }
+      setLoading(false);
+    };
+
+    getAuth();
   }, []);
+
+  if (loading) {
+    return <>Loading...</>;
+  }
 
   return <Outlet />;
 }

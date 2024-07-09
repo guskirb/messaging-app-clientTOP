@@ -2,9 +2,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useAuth from "../../hooks/useAuth";
+import { logIn, setLocalStorage } from "../../api/user";
 import "./auth.css";
-
-import useGetUser from "../../hooks/useGetUser";
 
 const schema = z.object({
   username: z.string().min(1, { message: "Username/Email is required" }),
@@ -13,7 +12,7 @@ const schema = z.object({
     .min(5, { message: "Password must contain at least 5 characters" }),
 });
 
-type FormFields = z.infer<typeof schema>;
+export type FormFields = z.infer<typeof schema>;
 
 export default function Login() {
   const { setAuth }: any = useAuth();
@@ -27,7 +26,17 @@ export default function Login() {
   });
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    
+    try {
+      const user = await logIn(data);
+      if (!user.success) {
+        throw new Error();
+      }
+      setLocalStorage(user);
+      setAuth(user.user);
+      window.location.href = "/";
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -49,7 +58,7 @@ export default function Login() {
         <div>
           <input
             {...register("password")}
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="Enter password"
