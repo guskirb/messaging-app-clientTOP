@@ -1,12 +1,11 @@
 .nav__container {
-  width: 100px;
+  width: 80px;
   height: 100%;
   background-color: rgb(31, 31, 31);
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   align-items: center;
-  gap: 25px;
 }
 
 .logo {
@@ -14,7 +13,7 @@
   background-size: contain;
   height: 50px;
   width: 50px;
-  margin-top: 20px;
+  margin-top: 15px;
   cursor: pointer;
 }
 
@@ -50,11 +49,12 @@
   background: url("../../assets/settings.svg");
 }
 
-.profile-img {
+.nav__profile-img {
   height: 50px;
   width: 50px;
+  object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   cursor: pointer;
 }
 
