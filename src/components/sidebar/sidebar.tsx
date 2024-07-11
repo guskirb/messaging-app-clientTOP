@@ -1,6 +1,6 @@
 import "./sidebar.css";
 import Profile from "../profile/profile";
-import Messages from "../messages/messages";
+import ChatroomList from "../chatroom-list/chatroom-list";
 import Friends from "../friends/friends";
 import Users from "../users/users";
 
@@ -21,8 +21,8 @@ export default function Sidebar({
     switch (content) {
       case "profile":
         return <Profile profile={profile} loading={loading} />;
-      case "messages":
-        return <Messages />;
+      case "chatrooms":
+        return <ChatroomList />;
       case "friends":
         return (
           <Friends setSidebar={setSidebar} getUserProfile={getUserProfile} />

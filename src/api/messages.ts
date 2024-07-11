@@ -13,3 +13,10 @@ export const createChatroom = async () => {
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };
+
+export const getMessages = async (id) => {
+  return axios
+    .get(`/chatrooms/${id}/messages`)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};

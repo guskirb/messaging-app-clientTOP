@@ -29,11 +29,11 @@ export default function Nav({
         ></div>
         <div
           className={
-            sidebar === "messages"
-              ? "message-button nav-button active"
-              : "message-button nav-button"
+            sidebar === "chatrooms"
+              ? "chatrooms-button nav-button active"
+              : "chatrooms-button nav-button"
           }
-          onClick={() => setSidebar("messages")}
+          onClick={() => setSidebar("chatrooms")}
         ></div>
         <div
           className={
