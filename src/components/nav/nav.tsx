@@ -22,7 +22,10 @@ export default function Nav({
               ? "profile-button nav-button active"
               : "profile-button nav-button"
           }
-          onClick={() => setSidebar("profile")}
+          onClick={() => {
+            setSidebar("profile");
+            setProfile(auth);
+          }}
         ></div>
         <div
           className={

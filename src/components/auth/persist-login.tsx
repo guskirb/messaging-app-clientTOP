@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { getUser } from "../../api/user";
+import { getSelf } from "../../api/user";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ export default function PersistLogin() {
 
   useEffect(() => {
     const getAuth = async () => {
-      const user = await getUser();
+      const user = await getSelf();
       if (user.user !== undefined) {
         setAuth(user);
       } else {
