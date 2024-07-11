@@ -1,7 +1,7 @@
 .user-list__container {
   display: flex;
   flex-flow: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .user__container {
@@ -14,4 +14,9 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.offline {
+  -webkit-filter: grayscale(1);
+  color: #21354785;
 }

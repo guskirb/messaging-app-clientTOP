@@ -15,13 +15,22 @@ export default function Users() {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-  console.log(users);
+
   const listUsers = users?.users.map((user) => (
-    <div className="user__container">
+    <div
+      key={user._id}
+      className={
+        user.last_online_formatted !== "online"
+          ? "user__container offline"
+          : "user__container online"
+      }
+    >
       <img className="user-img" src={user.image} alt="" />
       <div>
-        <p><b>{user.username}</b></p>
-        <p>{user.last_online}</p>
+        <p>
+          <b>{user.username}</b>
+        </p>
+        <p>{user.last_online_formatted}</p>
       </div>
     </div>
   ));
