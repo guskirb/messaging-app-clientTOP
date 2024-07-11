@@ -1,0 +1,35 @@
+.chatrooms__container {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.chatrooms-search {
+  width: 100%;
+}
+
+.search__container,
+.recent-chatrooms {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-chatroom-button {
+  background: url("../../assets/add-message.svg");
+  background-size: contain;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.list-messages__container {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+
+.chatroom__container {
+  cursor: pointer;
+}

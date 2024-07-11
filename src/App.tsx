@@ -4,6 +4,7 @@ import SignUp from "./pages/auth/signup";
 import Home from "./pages/home/home";
 import PersistLogin from "./components/auth/persist-login";
 import RequireAuth from "./components/auth/require-auth";
+import { ChatProvider } from "./context/chat-provider";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -23,7 +24,11 @@ export default function App() {
           children: [
             {
               path: "/",
-              element: <Home />,
+              element: (
+                <ChatProvider>
+                  <Home />
+                </ChatProvider>
+              ),
             },
           ],
         },
