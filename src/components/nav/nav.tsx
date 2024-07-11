@@ -6,7 +6,7 @@ export default function Nav({ setSidebar }: { setSidebar: any }) {
 
   return (
     <div className="nav__container">
-      <div className="logo"></div>
+      <div className="logo" onClick={() => setSidebar("messages")}></div>
       <div className="nav-middle">
         <div
           className="profile-button nav-button"
@@ -23,7 +23,12 @@ export default function Nav({ setSidebar }: { setSidebar: any }) {
       </div>
       <div className="nav-lower">
         <div className="settings-button nav-button"></div>
-        <img className="nav__profile-img" src={auth.user.image} alt="" />
+        <img
+          className="nav__profile-img"
+          src={auth.user.image}
+          alt=""
+          onClick={() => setSidebar("profile")}
+        />
       </div>
     </div>
   );
