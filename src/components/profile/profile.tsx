@@ -1,13 +1,11 @@
-import useAuth from "../../hooks/useAuth";
 import "./profile.css";
 
-export default function Profile() {
-  const { auth }: any = useAuth();
-
+export default function Profile({ profile }: { profile: any }) {
+  
   return (
     <div className="profile__container">
-      <img className="profile-img" src={auth.user.image} alt="" />
-      <h2>{auth.user.username}</h2>
+      <img className="profile-img" src={profile.user.image} alt="" />
+      <h2>{profile.user.username}</h2>
     </div>
   );
 }
