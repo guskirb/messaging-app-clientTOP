@@ -18,8 +18,8 @@ export default function ListUser({ setSidebar, getUserProfile, users }) {
       <div
         className={
           user.last_online_formatted !== "online"
-            ? "offline-icon"
-            : "online-icon"
+            ? "offline-icon offline-list"
+            : "online-icon online-list"
         }
       ></div>
       <div>
@@ -31,5 +31,5 @@ export default function ListUser({ setSidebar, getUserProfile, users }) {
     </div>
   ));
 
-  return <>{listUsers}</>;
+  return <div className="list__container">{listUsers}</div>;
 }

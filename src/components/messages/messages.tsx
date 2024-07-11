@@ -28,11 +28,11 @@ export default function Messages() {
   return (
     <div className="messages__container">
       <h2>Chats</h2>
-      <div>
+      <div className="search__container">
         <input
           className="messages-search"
           type="text"
-          placeholder="Search messages"
+          placeholder="Search Messages"
         />
       </div>
       <div>

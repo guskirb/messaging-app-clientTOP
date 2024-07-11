@@ -19,6 +19,13 @@ export default function Users({ setSidebar, getUserProfile }) {
   return (
     <div className="user-list__container">
       <h2>Users</h2>
+      <div className="search__container">
+        <input
+          className="messages-search"
+          type="text"
+          placeholder="Search Users"
+        />
+      </div>
       <ListUser
         setSidebar={setSidebar}
         getUserProfile={getUserProfile}

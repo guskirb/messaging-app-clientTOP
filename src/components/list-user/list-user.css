@@ -1,6 +1,12 @@
 .user-list__container {
   display: flex;
   flex-flow: column;
+  gap: 10px;
+}
+
+.list__container {
+  display: flex;
+  flex-flow: column;
   gap: 5px;
 }
 
@@ -25,24 +31,8 @@
   object-fit: cover;
 }
 
-.online-icon {
-  height: 8px;
-  width: 8px;
-  background-color: #3ba55c;
-  position: absolute;
-  border-radius: 50%;
+.online-list, .offline-list {
   transform: translateX(30px) translateY(16px);
-  border: 2px solid white;
-}
-
-.offline-icon {
-  height: 8px;
-  width: 8px;
-  background-color: rgb(216, 216, 216);
-  position: absolute;
-  border-radius: 50%;
-  transform: translateX(30px) translateY(16px);
-  border: 2px solid white;
 }
 
 .offline {

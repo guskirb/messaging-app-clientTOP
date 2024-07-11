@@ -1,6 +1,5 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -74,6 +73,30 @@ input {
   border: 1px solid #d1d1d1;
   padding-block: 5px;
   padding-inline: 10px;
+}
+
+.online-icon {
+  height: 8px;
+  width: 8px;
+  background-color: #3ba55c;
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.offline-icon {
+  height: 8px;
+  width: 8px;
+  background-color: rgb(216, 216, 216);
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.search__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (prefers-color-scheme: light) {
