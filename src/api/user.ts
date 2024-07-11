@@ -24,10 +24,23 @@ export const getAllUsers = async () => {
     .catch((error) => error.response.data);
 };
 
+export const getUser = async (id) => {
+  return axios
+    .get(`/users/${id}`)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
 
-export const getUser = async () => {
+export const getSelf = async () => {
   return axios
     .get("/users/me")
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
+export const getFriends = async () => {
+  return axios
+    .get("/users/friends")
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };

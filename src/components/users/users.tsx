@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllUsers } from "../../api/user";
-import "./users.css";
+import ListUser from "../list-user/list-user";
 
-export default function Users() {
+export default function Users({ setSidebar, getUserProfile }) {
   const {
     data: users,
     isLoading,
@@ -16,29 +16,14 @@ export default function Users() {
     return <p>Loading...</p>;
   }
 
-  const listUsers = users?.users.map((user) => (
-    <div
-      key={user._id}
-      className={
-        user.last_online_formatted !== "online"
-          ? "user__container offline"
-          : "user__container online"
-      }
-    >
-      <img className="user-img" src={user.image} alt="" />
-      <div>
-        <p>
-          <b>{user.username}</b>
-        </p>
-        <p>{user.last_online_formatted}</p>
-      </div>
-    </div>
-  ));
-
   return (
     <div className="user-list__container">
       <h2>Users</h2>
-      {listUsers}
+      <ListUser
+        setSidebar={setSidebar}
+        getUserProfile={getUserProfile}
+        users={users}
+      />
     </div>
   );
 }
