@@ -20,6 +20,10 @@ export default function Nav({ setSidebar }: { setSidebar: any }) {
           className="friends-button nav-button"
           onClick={() => setSidebar("friends")}
         ></div>
+        <div
+          className="users-button nav-button"
+          onClick={() => setSidebar("users")}
+        ></div>
       </div>
       <div className="nav-lower">
         <div className="settings-button nav-button"></div>

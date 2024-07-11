@@ -34,7 +34,11 @@
 }
 
 .friends-button {
-  background: url("../../assets/friends.svg");
+  background: url("../../assets/friend.svg");
+}
+
+.users-button {
+  background: url("../../assets/users.svg");
 }
 
 .nav-lower {

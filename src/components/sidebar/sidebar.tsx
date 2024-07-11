@@ -2,6 +2,7 @@ import "./sidebar.css";
 import Profile from "../profile/profile";
 import Messages from "../messages/messages";
 import Friends from "../friends/friends";
+import Users from "../users/users";
 
 export default function Sidebar({ content }: { content: string }) {
   const renderSidebar = () => {
@@ -12,6 +13,8 @@ export default function Sidebar({ content }: { content: string }) {
         return <Messages />;
       case "friends":
         return <Friends />;
+      case "users":
+        return <Users />;
     }
   };
 

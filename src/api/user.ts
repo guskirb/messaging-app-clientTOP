@@ -17,6 +17,14 @@ export const registerUser = async (data: FormFields) => {
     .catch((error) => error.response.data);
 };
 
+export const getAllUsers = async () => {
+  return axios
+    .get("/users")
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
+
 export const getUser = async () => {
   return axios
     .get("/users/me")
