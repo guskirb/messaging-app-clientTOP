@@ -20,3 +20,10 @@ export const getMessages = async (id) => {
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };
+
+export const postMessage = async (id, data) => {
+  return axios
+    .post(`/chatrooms/${id}/messages`, data)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};

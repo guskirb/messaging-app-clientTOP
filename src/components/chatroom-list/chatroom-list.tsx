@@ -5,8 +5,8 @@ import "./chatroom-list.css";
 export default function ChatroomList({}) {
   const { chatrooms, chatroomLoading, setChatroom, refetch } = useChat();
 
-  function onClick() {
-    createChatroom();
+  async function onClick() {
+    await createChatroom();
     refetch();
   }
 
