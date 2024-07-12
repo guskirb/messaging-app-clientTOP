@@ -11,7 +11,7 @@ export default function Friends({ setSidebar, getUserProfile }) {
     queryKey: ["friends"],
     queryFn: getFriends,
   });
-  console.log(users)
+
   if (isLoading) {
     return <p>Loading...</p>;
   }

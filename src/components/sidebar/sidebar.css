@@ -1,6 +1,6 @@
 .sidebar__container {
     background-color: rgb(235, 235, 235);
-    width: 400px;
+    min-width: 400px;
     height: 100%;
     box-sizing: border-box;
     padding: 20px;

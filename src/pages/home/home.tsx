@@ -7,7 +7,7 @@ import "./home.css";
 
 export default function Home() {
   const { profile, setProfile, getUserProfile, loading } = useSetProfile();
-  const [sidebar, setSidebar] = useState("profile");
+  const [sidebar, setSidebar] = useState("chatrooms");
 
   return (
     <div className="home__container">

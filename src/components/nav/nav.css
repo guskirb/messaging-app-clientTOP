@@ -1,5 +1,5 @@
 .nav__container {
-  width: 80px;
+  min-width: 80px;
   height: 100%;
   background-color: rgb(31, 31, 31);
   display: flex;
@@ -13,7 +13,7 @@
   background-size: contain;
   height: 50px;
   width: 50px;
-  margin-top: 15px;
+  margin: 15px;
   cursor: pointer;
 }
 
@@ -29,7 +29,7 @@
   background: url("../../assets/profile.svg");
 }
 
-.chatrooms-button  {
+.chatrooms-button {
   background: url("../../assets/messages.svg");
 }
 
