@@ -1,24 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import { getMessages } from "../../api/messages";
-import useChat from "../../hooks/useChat";
+import ListChat from "./list-chat";
+import { memo } from "react";
+import "./chat.css";
 
-export default function Chat() {
-  const { chatroom } = useChat();
-  const {
-    data: messages,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: [chatroom?._id],
-    queryFn: () => getMessages(chatroom?._id),
-    enabled: !!chatroom?._id,
-  });
+export default memo(function Chat() {
 
-  console.log(messages)
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  return <div>chat</div>;
-}
+  return (
+    <div className="chat__container">
+      <ListChat />
+      <div className="input__container">
+        <input type="text" placeholder="Enter Message..." />
+        <button>enter</button>
+      </div>
+    </div>
+  );
+});

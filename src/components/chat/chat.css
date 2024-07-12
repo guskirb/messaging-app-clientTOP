@@ -1,0 +1,21 @@
+.chat__container {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.input__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+.input__container > input {
+    width: 85%;
+    height: 35px;
+    padding-inline: 15px;
+}
