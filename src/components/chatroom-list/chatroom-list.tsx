@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { createChatroom } from "../../api/messages";
+import ChatroomModal from "./chatroom-modal";
 import useChat from "../../hooks/useChat";
 import "./chatroom-list.css";
 
 export default function ChatroomList({}) {
   const { chatrooms, chatroomLoading, setChatroom, refetch } = useChat();
+  const [showModal, setShowModal] = useState(false);
 
-  async function onClick() {
-    await createChatroom();
-    refetch();
+  function onClick() {
+    // await createChatroom();
+    // refetch();
+    setShowModal(true);
   }
 
   if (chatroomLoading) {
@@ -30,6 +34,9 @@ export default function ChatroomList({}) {
 
   return (
     <div className="chatrooms__container">
+      {showModal && (
+        <ChatroomModal setShowModal={setShowModal} refetch={refetch} />
+      )}
       <h2>Chats</h2>
       <div className="search__container">
         <input
