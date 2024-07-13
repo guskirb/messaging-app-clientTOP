@@ -14,6 +14,13 @@ export const createChatroom = async () => {
     .catch((error) => error.response.data);
 };
 
+export const addToChatroom = async (id, data) => {
+  return axios
+    .post(`/chatrooms/${id}/add-user`, data)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
 export const getMessages = async (id) => {
   return axios
     .get(`/chatrooms/${id}/messages`)

@@ -99,6 +99,10 @@ input {
   justify-content: space-between;
 }
 
+.search__container > input {
+  width: 100%;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

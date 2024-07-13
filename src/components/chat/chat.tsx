@@ -17,7 +17,7 @@ export default memo(function Chat() {
     queryFn: () => getMessages(chatroom?._id),
     enabled: !!chatroom?._id,
   });
-
+  console.log(chatroom)
   async function onSend(e) {
     e.preventDefault();
     let response = await postMessage(chatroom?._id, {

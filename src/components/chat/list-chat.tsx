@@ -1,6 +1,6 @@
 
 export default function ListChat({ messages, isLoading }) {
-  console.log(messages);
+  // console.log(messages);
 
   if (isLoading) {
     return <p>Loading...</p>;
