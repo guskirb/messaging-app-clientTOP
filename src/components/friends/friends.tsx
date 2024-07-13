@@ -1,16 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { getFriends } from "../../api/user";
 import ListUser from "../list-user/list-user";
+import useGetFriends from "../../hooks/useGetFriends";
 
 export default function Friends({ setSidebar, getUserProfile }) {
-  const {
-    data: users,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["friends"],
-    queryFn: getFriends,
-  });
+  const { users, isLoading } = useGetFriends();
 
   if (isLoading) {
     return <p>Loading...</p>;
