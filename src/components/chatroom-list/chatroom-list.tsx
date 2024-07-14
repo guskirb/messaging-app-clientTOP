@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { createChatroom } from "../../api/messages";
+import useAuth from "../../hooks/useAuth";
 import ChatroomModal from "./chatroom-modal";
+import ChatroomBox from "./chatroom-box";
 import useChat from "../../hooks/useChat";
 import "./chatroom-list.css";
 
 export default function ChatroomList({}) {
   const { chatrooms, chatroomLoading, setChatroom, refetch } = useChat();
+  const { auth } = useAuth();
   const [showModal, setShowModal] = useState(false);
 
   function onClick() {
@@ -22,15 +24,17 @@ export default function ChatroomList({}) {
   //   return <p>No Chats</p>
   // }
 
-  const listChatrooms = chatrooms?.chatrooms.map((chat) => (
-    <div
-      key={chat._id}
-      className="chatroom__container"
-      onClick={() => setChatroom(chat)}
-    >
-      {chat._id}
-    </div>
-  ));
+  const listChatrooms = chatrooms?.chatrooms
+    .filter((item) => item.pinned === false)
+    .map((chat) => (
+      <ChatroomBox chat={chat} setChatroom={setChatroom} refetch={refetch} />
+    ));
+
+  const listPinnedChatrooms = chatrooms?.chatrooms
+    .filter((item) => item.pinned === true)
+    .map((chat) => (
+      <ChatroomBox chat={chat} setChatroom={setChatroom} refetch={refetch} />
+    ));
 
   return (
     <div className="chatrooms__container">
@@ -45,6 +49,11 @@ export default function ChatroomList({}) {
           placeholder="Search Messages"
         />
       </div>
+      <div className="pinned-chatrooms">
+        <h3>Pinned</h3>
+      </div>
+      <div className="list-messages__container">{listPinnedChatrooms}</div>
+
       <div className="recent-chatrooms">
         <h3>Recent</h3>
         <div onClick={onClick} className="add-chatroom-button"></div>

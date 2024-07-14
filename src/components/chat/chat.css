@@ -4,18 +4,35 @@
   flex-flow: column;
 }
 
+.chat-upper__container {
+  background-color: red;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.chat-upper__container > .user-img {
+  height: 50px;
+  width: 50px;
+}
+
+.options-button {
+  margin-left: auto;
+}
+
 .input__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 30px;
-    box-sizing: border-box;
-    margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: auto;
 }
 
 .input__container > input {
-    width: 85%;
-    height: 35px;
-    padding-inline: 15px;
+  width: 85%;
+  height: 35px;
+  padding-inline: 15px;
 }

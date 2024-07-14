@@ -31,7 +31,24 @@
 }
 
 .chatroom__container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.more-button {
+  margin-left: auto;
+  margin-bottom: auto;
+  background: url("../../assets/dots.svg");
+  background-size: contain;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  background-repeat: no-repeat;
 }
 
 .modal__background {
@@ -53,9 +70,12 @@
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
 }
 
-.modal__upper{
+.modal__upper {
   display: flex;
   align-items: center;
   justify-content: space-between;
