@@ -15,7 +15,7 @@ export default function useSetChatroom() {
 
   useEffect(() => {
     setChatroom(chatrooms?.chatrooms[0]);
-  }, [chatrooms]);
+  }, []);
 
   return {
     chatrooms,

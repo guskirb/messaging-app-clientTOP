@@ -27,13 +27,23 @@ export default function ChatroomList({}) {
   const listChatrooms = chatrooms?.chatrooms
     .filter((item) => item.pinned === false)
     .map((chat) => (
-      <ChatroomBox chat={chat} setChatroom={setChatroom} refetch={refetch} />
+      <ChatroomBox
+        chat={chat}
+        setChatroom={setChatroom}
+        refetch={refetch}
+        key={chat._id}
+      />
     ));
 
   const listPinnedChatrooms = chatrooms?.chatrooms
     .filter((item) => item.pinned === true)
     .map((chat) => (
-      <ChatroomBox chat={chat} setChatroom={setChatroom} refetch={refetch} />
+      <ChatroomBox
+        chat={chat}
+        setChatroom={setChatroom}
+        refetch={refetch}
+        key={chat._id}
+      />
     ));
 
   return (
@@ -41,7 +51,11 @@ export default function ChatroomList({}) {
       {showModal && (
         <ChatroomModal setShowModal={setShowModal} refetch={refetch} />
       )}
-      <h2>Chats</h2>
+
+      <div className="chatrooms__upper">
+        <h2>Chats</h2>
+        <div onClick={onClick} className="add-chatroom-button"></div>
+      </div>
       <div className="search__container">
         <input
           className="chatrooms-search"
@@ -53,10 +67,8 @@ export default function ChatroomList({}) {
         <h3>Pinned</h3>
       </div>
       <div className="list-messages__container">{listPinnedChatrooms}</div>
-
       <div className="recent-chatrooms">
         <h3>Recent</h3>
-        <div onClick={onClick} className="add-chatroom-button"></div>
       </div>
       <div className="list-messages__container">{listChatrooms}</div>
     </div>

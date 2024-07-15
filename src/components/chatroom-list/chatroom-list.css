@@ -5,6 +5,12 @@
   gap: 10px;
 }
 
+.chatrooms__upper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .chatrooms-search {
   width: 100%;
 }
@@ -48,6 +54,52 @@
   height: 25px;
   width: 25px;
   cursor: pointer;
+  background-repeat: no-repeat;
+}
+
+.dropdown__container {
+  background-color: red;
+  width: 100px;
+  position: absolute;
+  transform: translateX(310px) translateY(40px);
+  border-radius: 5px;
+  padding-block: 5px;
+}
+
+.dropdown__container > ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+}
+
+.dropdown__container > ul > li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 5px;
+  padding-inline: 10px;
+}
+
+.dropdown__container > ul > li:hover {
+  background-color: blue;
+}
+
+.pin-icon {
+  background: url("../../assets/pin.svg");
+}
+
+.unpin-icon {
+  background: url("../../assets/unpin.svg");
+}
+
+.leave-icon {
+  background: url("../../assets/exit.svg");
+}
+
+.icon {
+  background-size: contain;
+  height: 15px;
+  width: 15px;
   background-repeat: no-repeat;
 }
 
