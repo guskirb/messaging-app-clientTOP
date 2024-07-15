@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import useGetFriends from "../../hooks/useGetFriends";
 import { addFriend, removeFriend } from "../../api/user";
 
-export default function ListUserDropdown({ user }) {
-  const { users, refetch} = useGetFriends();
+export default function ListUserDropdown({ user, friends, refetch }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef(null);
   const dropdownRef = useRef(null);
@@ -58,17 +56,17 @@ export default function ListUserDropdown({ user }) {
           <ul>
             <li
               onClick={
-                users.users.some(e => e._id === user._id)
+                friends.users.some(e => e._id === user._id)
                   ? () => onClickRemove(user._id)
                   : () => onClickAdd(user._id)
               }
             >
-              {users.users.some(e => e._id === user._id)
+              {friends.users.some(e => e._id === user._id)
                 ? "Remove Friend"
                 : "Add Friend"}
               <div
                 className={
-                  users.users.some(e => e._id === user._id)
+                  friends.users.some(e => e._id === user._id)
                     ? "remove-friend-icon icon"
                     : "add-friend-icon icon"
                 }

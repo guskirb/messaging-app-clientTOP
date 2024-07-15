@@ -31,7 +31,8 @@
   object-fit: cover;
 }
 
-.online-list, .offline-list {
+.online-list,
+.offline-list {
   transform: translateX(30px) translateY(16px);
 }
 
@@ -44,4 +45,22 @@
 
 .user-last-online {
   font-size: 0.8em;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.friend-icon {
+  background: url("../../assets/blackstar.svg");
+  background-size: contain;
+  height: 10px;
+  width: 10px;
+  background-repeat: no-repeat;
+}
+
+.offline .friend-icon {
+  opacity: 0.5;
 }

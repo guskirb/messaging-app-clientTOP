@@ -1,13 +1,11 @@
 import ListUserDropdown from "./list-user-dropdown";
 import useAuth from "../../hooks/useAuth";
+import useGetFriends from "../../hooks/useGetFriends";
 import "./list-user.css";
 
-export default function ListUser({
-  setSidebar,
-  getUserProfile,
-  users,
-}) {
+export default function ListUser({ setSidebar, getUserProfile, users }) {
   const { auth } = useAuth();
+  const { users: friends, refetch } = useGetFriends();
 
   const listUsers = users?.users.map((user) => (
     <div
@@ -31,13 +29,20 @@ export default function ListUser({
         }
       ></div>
       <div>
-        <p>
-          <b>{user.username}</b>
-        </p>
+        <div className="user-name">
+          <p>
+            <b>{user.username}</b>
+          </p>
+          <div
+            className={
+              friends.users.some((e) => e._id === user._id) ? "friend-icon" : ""
+            }
+          ></div>
+        </div>
         <p className="user-last-online">{user.last_online_formatted}</p>
       </div>
       {user._id !== auth.user._id && (
-        <ListUserDropdown user={user} />
+        <ListUserDropdown user={user} friends={friends} refetch={refetch} />
       )}
     </div>
   ));
