@@ -1,21 +1,18 @@
 import useAuth from "../../hooks/useAuth";
-import { pinChatroom } from "../../api/messages";
+import ChatroomDropdown from "./chatroom-dropdown";
 import "./chatroom-list.css";
 
 export default function ChatroomBox({ chat, setChatroom, refetch }) {
   const { auth } = useAuth();
 
-  async function onClick(id) {
-    await pinChatroom(id);
-    refetch();
+  function onClickSetChatroom(e) {
+    if (e.target.className !== "more-button") {
+      setChatroom(chat);
+    }
   }
 
   return (
-    <div
-      key={chat._id}
-      className="chatroom__container"
-      onClick={() => setChatroom(chat)}
-    >
+    <div className="chatroom__container" onClick={onClickSetChatroom}>
       <img
         className="user-img"
         src={
@@ -49,10 +46,7 @@ export default function ChatroomBox({ chat, setChatroom, refetch }) {
         </p>
         <p>{chat.last_message}</p>
       </div>
-      <div
-        className="more-button"
-        onClick={() => onClick(chat._id)}
-      ></div>
+      <ChatroomDropdown refetch={refetch} chat={chat} />
     </div>
   );
 }

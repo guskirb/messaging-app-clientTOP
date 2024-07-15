@@ -21,6 +21,13 @@ export const addToChatroom = async (id, data) => {
     .catch((error) => error.response.data);
 };
 
+export const leaveChatroom = async (id) => {
+  return axios
+    .post(`/chatrooms/${id}/leave`)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
 export const pinChatroom = async (id) => {
   return axios
     .post(`/chatrooms/${id}/pin`)
