@@ -38,6 +38,20 @@ export const getSelf = async () => {
     .catch((error) => error.response.data);
 };
 
+export const addFriend = async (id) => {
+  return axios
+    .post(`/users/${id}/add`)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
+export const removeFriend = async (id) => {
+  return axios
+    .post(`/users/${id}/remove`)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
 export const getFriends = async () => {
   return axios
     .get("/users/friends")

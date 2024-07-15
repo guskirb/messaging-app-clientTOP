@@ -29,6 +29,10 @@ export default function ChatroomDropdown({ refetch, chat }) {
     }
   }
 
+  function stopPropagation(e) {
+    e.stopPropagation();
+  }
+
   useEffect(() => {
     document.addEventListener("mousedown", handleOutsideClick);
     return () => {
@@ -44,7 +48,11 @@ export default function ChatroomDropdown({ refetch, chat }) {
         ref={buttonRef}
       ></div>
       {showDropdown && (
-        <div className="dropdown__container" ref={dropdownRef}>
+        <div
+          className="dropdown__container"
+          ref={dropdownRef}
+          onClick={stopPropagation}
+        >
           <ul>
             <li onClick={() => onClickPin(chat._id)}>
               {chat.pinned ? "Unpin" : "Pin"}

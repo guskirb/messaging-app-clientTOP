@@ -1,6 +1,14 @@
+import ListUserDropdown from "./list-user-dropdown";
+import useAuth from "../../hooks/useAuth";
 import "./list-user.css";
 
-export default function ListUser({ setSidebar, getUserProfile, users }) {
+export default function ListUser({
+  setSidebar,
+  getUserProfile,
+  users,
+}) {
+  const { auth } = useAuth();
+
   const listUsers = users?.users.map((user) => (
     <div
       key={user._id}
@@ -28,6 +36,9 @@ export default function ListUser({ setSidebar, getUserProfile, users }) {
         </p>
         <p className="user-last-online">{user.last_online_formatted}</p>
       </div>
+      {user._id !== auth.user._id && (
+        <ListUserDropdown user={user} />
+      )}
     </div>
   ));
 

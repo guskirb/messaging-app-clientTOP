@@ -59,9 +59,9 @@
 
 .dropdown__container {
   background-color: red;
-  width: 100px;
+  width: fit-content;
   position: absolute;
-  transform: translateX(310px) translateY(40px);
+  transform: translateX(310px) translateY(60%);
   border-radius: 5px;
   padding-block: 5px;
 }
@@ -78,6 +78,7 @@
   justify-content: space-between;
   padding-block: 5px;
   padding-inline: 10px;
+  gap: 20px;
 }
 
 .dropdown__container > ul > li:hover {
