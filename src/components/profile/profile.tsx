@@ -21,14 +21,14 @@ export default function Profile({
         <h2>{profile.user.username}</h2>
         <div
           className={
-            friends.users.some((e) => e._id === profile.user._id)
+            friends?.users?.some((e) => e._id === profile.user._id)
               ? "friend-icon"
               : ""
           }
         ></div>
         <div
           className={
-            profile.user.last_online_formatted !== "online"
+            profile.user?.last_online_formatted !== "online"
               ? "offline-icon offline-profile"
               : "online-icon online-profile"
           }

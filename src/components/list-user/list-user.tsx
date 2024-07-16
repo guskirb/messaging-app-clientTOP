@@ -3,9 +3,18 @@ import useAuth from "../../hooks/useAuth";
 import useGetFriends from "../../hooks/useGetFriends";
 import "./list-user.css";
 
-export default function ListUser({ setSidebar, getUserProfile, users }) {
+export default function ListUser({
+  setSidebar,
+  getUserProfile,
+  users,
+  isLoading,
+}) {
   const { auth } = useAuth();
   const { users: friends, refetch } = useGetFriends();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const listUsers = users?.users.map((user) => (
     <div
@@ -35,7 +44,7 @@ export default function ListUser({ setSidebar, getUserProfile, users }) {
           </p>
           <div
             className={
-              friends.users.some((e) => e._id === user._id) ? "friend-icon" : ""
+              friends?.users?.some((e) => e._id === user._id) ? "friend-icon" : ""
             }
           ></div>
         </div>

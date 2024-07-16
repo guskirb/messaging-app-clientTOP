@@ -30,6 +30,7 @@ export default function Users({ setSidebar, getUserProfile }) {
         setSidebar={setSidebar}
         getUserProfile={getUserProfile}
         users={users}
+        isLoading={isLoading}
       />
     </div>
   );

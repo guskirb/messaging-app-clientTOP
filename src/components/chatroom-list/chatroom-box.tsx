@@ -45,7 +45,7 @@ export default function ChatroomBox({ chat, setChatroom, refetch }) {
                     .join(", ")}
             </b>
           </p>
-          <div className={chat.pinned && "pin-icon icon"}></div>
+          <div className={chat.pinned ? "pin-icon icon" : ""}></div>
         </div>
         <div>
         <p>{chat.last_message ? chat.last_message : <i>No messages...</i>}</p>
