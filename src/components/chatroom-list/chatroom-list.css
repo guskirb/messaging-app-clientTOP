@@ -46,6 +46,30 @@
   transition: all 0.2s ease-in-out;
 }
 
+.chatroom__container:hover {
+  background-color: rgb(218, 218, 218);
+}
+
+.chatroom-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chatroom-name > .pin-icon {
+  height: 12px;
+  width: 12px;
+}
+
+.chat-last-active {
+  font-size: 0.7em;
+  color: rgb(153, 153, 153);
+  position: fixed;
+  transform: translateY(10px) translateX(230px);
+  width: 100px;
+  text-align: end;
+}
+
 .more-button {
   margin-left: auto;
   margin-bottom: auto;

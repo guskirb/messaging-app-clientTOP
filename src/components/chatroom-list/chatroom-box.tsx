@@ -27,26 +27,32 @@ export default function ChatroomBox({ chat, setChatroom, refetch }) {
         alt=""
       />
       <div>
-        <p>
-          <b>
-            {chat?.name
-              ? chat.name
-              : chat?.users.length === 1
-              ? "Empty Room"
-              : chat.users
-                  .filter((user) => {
-                    if (user._id !== auth.user._id) {
-                      return user;
-                    }
-                  })
-                  .slice(0, 3)
-                  .map((user) => user.username)
-                  .join(", ")}
-          </b>
-        </p>
-        <p>{chat.last_message}</p>
+        <div className="chatroom-name">
+          <p>
+            <b>
+              {chat?.name
+                ? chat.name
+                : chat?.users.length === 1
+                ? "Empty Room"
+                : chat.users
+                    .filter((user) => {
+                      if (user._id !== auth.user._id) {
+                        return user;
+                      }
+                    })
+                    .slice(0, 3)
+                    .map((user) => user.username)
+                    .join(", ")}
+            </b>
+          </p>
+          <div className={chat.pinned && "pin-icon icon"}></div>
+        </div>
+        <div>
+        <p>{chat.last_message ? chat.last_message : <i>No messages...</i>}</p>
+        </div>
       </div>
       <ChatroomDropdown refetch={refetch} chat={chat} />
+      <p className="chat-last-active">{chat.last_active_formatted}</p>
     </div>
   );
 }
