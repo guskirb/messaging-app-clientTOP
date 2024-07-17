@@ -45,6 +45,10 @@ input:not(:placeholder-shown) + .form-label {
   padding-inline: 10px;
 }
 
+.button-wrapper > .error-message {
+  transform: translateX(90px) translateY(45px);
+}
+
 .error-message {
   position: absolute;
   transform: translateY(38px) translateX(5px);

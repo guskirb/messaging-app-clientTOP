@@ -77,11 +77,13 @@ export default function Login() {
           {errors.password && (
             <span className="error-message">{errors.password.message}</span>
           )}
+        </div>
+        <div className="button-wrapper">
+          <button>Log In</button>
           {errors.root && (
             <span className="error-message">{errors.root.message}</span>
           )}
         </div>
-        <button>Log In</button>
         <p>
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </p>

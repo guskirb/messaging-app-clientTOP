@@ -114,11 +114,13 @@ export default function SignUp() {
           {errors.confirm && (
             <span className="error-message">{errors.confirm.message}</span>
           )}
+        </div>
+        <div className="button-wrapper">
+          <button>Create Account</button>
           {errors.root && (
             <span className="error-message">{errors.root.message}</span>
           )}
         </div>
-        <button>Create Account</button>
         <p>
           Already have an account? <Link to="/login">Log In</Link>
         </p>
