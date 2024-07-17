@@ -47,7 +47,7 @@ input:not(:placeholder-shown) + .form-label {
 
 .error-message {
   position: absolute;
-  transform: translateY(35px) translateX(5px);
+  transform: translateY(38px) translateX(5px);
   color: red;
   font-size: 0.8em;
 }

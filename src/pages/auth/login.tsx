@@ -36,7 +36,9 @@ export default function Login() {
       setAuth(user.user);
       window.location.href = "/";
     } catch (err) {
-      console.log(err);
+      setError("root", {
+        message: "Incorrect Username/Password",
+      });
     }
   };
 
@@ -74,6 +76,9 @@ export default function Login() {
           </label>
           {errors.password && (
             <span className="error-message">{errors.password.message}</span>
+          )}
+          {errors.root && (
+            <span className="error-message">{errors.root.message}</span>
           )}
         </div>
         <button>Log In</button>
