@@ -68,6 +68,7 @@
   transform: translateY(10px) translateX(230px);
   width: 100px;
   text-align: end;
+  z-index: 0;
 }
 
 .more-button {
@@ -88,6 +89,7 @@
   transform: translateX(310px) translateY(60%);
   border-radius: 5px;
   padding-block: 5px;
+  z-index: 1;
 }
 
 .dropdown__container > ul {

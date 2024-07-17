@@ -48,7 +48,17 @@ export default function ChatroomBox({ chat, setChatroom, refetch }) {
           <div className={chat.pinned ? "pin-icon icon" : ""}></div>
         </div>
         <div>
-        <p>{chat.last_message ? chat.last_message : <i>No messages...</i>}</p>
+          <p>
+            {chat.last_message ? (
+              chat.last_message.length > 20 ? (
+                chat.last_message.slice(0, 20) + "..."
+              ) : (
+                chat.last_message
+              )
+            ) : (
+              <i>No messages...</i>
+            )}
+          </p>
         </div>
       </div>
       <ChatroomDropdown refetch={refetch} chat={chat} />

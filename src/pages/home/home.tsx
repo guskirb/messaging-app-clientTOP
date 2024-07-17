@@ -19,7 +19,7 @@ export default function Home() {
         getUserProfile={getUserProfile}
         loading={loading}
       />
-      <Chat />
+      <Chat setSidebar={setSidebar} getUserProfile={getUserProfile}/>
     </div>
   );
 }

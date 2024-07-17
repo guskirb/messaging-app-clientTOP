@@ -8,8 +8,8 @@ import useSetChatroom from "../../hooks/useSetChatroom";
 import useAuth from "../../hooks/useAuth";
 import "./chat.css";
 
-export default memo(function Chat() {
-  const { chatroom } = useChat();
+export default memo(function Chat({ setSidebar, getUserProfile }) {
+  const { chatroom, chatroomLoading } = useChat();
   const { auth } = useAuth();
   const { refetch } = useSetChatroom();
   const {
@@ -49,7 +49,11 @@ export default memo(function Chat() {
           .slice(0, 3)
           .map((user) => user.username)
           .join(", ")
-    : "";
+    : "Empty Room";
+
+  if (isLoading || chatroomLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="chat__container">
@@ -67,10 +71,15 @@ export default memo(function Chat() {
           }
           alt=""
         />
-        <h2>{chatroom?.users && setName}</h2>
+        <h2>{setName}</h2>
         <button className="options-button">Options</button>
       </div>
-      <ListChat messages={messages} isLoading={isLoading} />
+      <ListChat
+        messages={messages}
+        isLoading={isLoading}
+        setSidebar={setSidebar}
+        getUserProfile={getUserProfile}
+      />
       <form action="" className="input__container" onSubmit={onSend}>
         <input type="text" name="message" placeholder="Enter Message..." />
         <button>enter</button>

@@ -21,6 +21,42 @@
   margin-left: auto;
 }
 
+.message__container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 5px;
+}
+
+.message__container > div {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+
+.message-box {
+  padding: 10px;
+  border: 1px solid black;
+  min-width: 40px;
+  max-width: 40vw;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-left: 52px;
+}
+
+.message-lower {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
 .input__container {
   display: flex;
   align-items: center;
@@ -35,4 +71,16 @@
   width: 85%;
   height: 35px;
   padding-inline: 15px;
+}
+
+.user-me {
+  align-self: flex-end;
+}
+
+.user-me > .message-box {
+  margin-right: 52px;
+}
+
+.user-me > .message-lower {
+  flex-direction: row-reverse;
 }
