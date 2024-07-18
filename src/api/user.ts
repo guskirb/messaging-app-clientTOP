@@ -10,6 +10,11 @@ export const logIn = async (data: FormFields) => {
     .catch((error) => error.response.data);
 };
 
+export const logOut = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("expires");
+};
+
 export const registerUser = async (data: FormFields) => {
   return axios
     .post("/users/register", data)

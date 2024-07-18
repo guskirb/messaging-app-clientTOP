@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { getSelf } from "../../api/user";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import { logOut } from "../../api/user";
 
 export default function PersistLogin() {
   const { setAuth }: any = useAuth();
@@ -13,6 +14,7 @@ export default function PersistLogin() {
       if (user.user !== undefined) {
         setAuth(user);
       } else {
+        logOut();
         setAuth(undefined);
       }
       setLoading(false);
