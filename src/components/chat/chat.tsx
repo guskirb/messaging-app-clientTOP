@@ -7,6 +7,7 @@ import { postMessage } from "../../api/messages";
 import useSetChatroom from "../../hooks/useSetChatroom";
 import useAuth from "../../hooks/useAuth";
 import "./chat.css";
+import ImageUpload from "./image-upload";
 
 export default memo(function Chat({ setSidebar, getUserProfile }) {
   const { chatroom, chatroomLoading } = useChat();
@@ -84,6 +85,11 @@ export default memo(function Chat({ setSidebar, getUserProfile }) {
         <input type="text" name="message" placeholder="Enter Message..." />
         <button>enter</button>
       </form>
+      <ImageUpload
+          chatroom={chatroom}
+          refetch={refetch}
+          messageFetch={messageFetch}
+        />
     </div>
   );
 });

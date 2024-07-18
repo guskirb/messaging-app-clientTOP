@@ -7,9 +7,9 @@ export const getChatrooms = async () => {
     .catch((error) => error.response.data);
 };
 
-export const createChatroom = async () => {
+export const createChatroom = async (data) => {
   return axios
-    .post("/chatrooms/create")
+    .post("/chatrooms/create", data)
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };
@@ -45,6 +45,13 @@ export const getMessages = async (id) => {
 export const postMessage = async (id, data) => {
   return axios
     .post(`/chatrooms/${id}/messages`, data)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
+export const postImgMessage = async (id, data) => {
+  return axios
+    .post(`/chatrooms/${id}/messages/upload`, data)
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };
