@@ -2,7 +2,12 @@ import useGetFriends from "../../hooks/useGetFriends";
 import { createChatroom, addToChatroom } from "../../api/messages";
 import "./chatroom-list.css";
 
-export default function ChatroomModal({ setShowModal, refetch }) {
+export default function ChatroomModal({
+  setShowModal,
+  refetch,
+  setChatroom,
+  chatrooms,
+}) {
   const { users, isLoading } = useGetFriends();
 
   function closeModal(e) {
@@ -14,14 +19,11 @@ export default function ChatroomModal({ setShowModal, refetch }) {
     }
     setShowModal(false);
   }
-
+  console.log(chatrooms);
   async function makeChatroom(id) {
     setShowModal(false);
-    const response = await createChatroom();
+    let response = await createChatroom({ user: id });
     if (response?.success) {
-      await addToChatroom(response.chatroom._id, {
-        user: id,
-      });
       refetch();
     }
   }

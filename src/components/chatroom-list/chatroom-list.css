@@ -64,7 +64,7 @@
 .chat-last-active {
   font-size: 0.7em;
   color: rgb(153, 153, 153);
-  position: fixed;
+  position: absolute;
   transform: translateY(10px) translateX(230px);
   width: 100px;
   text-align: end;
@@ -84,9 +84,9 @@
 
 .dropdown__container {
   background-color: red;
-  width: fit-content;
+  width: 170px;
   position: absolute;
-  transform: translateX(310px) translateY(60%);
+  transform: translateX(150px) translateY(55%);
   border-radius: 5px;
   padding-block: 5px;
   z-index: 1;
@@ -137,6 +137,7 @@
   right: 0;
   bottom: 0;
   background-color: #00000098;
+  z-index: 2;
 }
 
 .modal__container {

@@ -18,11 +18,16 @@ export default function Friends({ setSidebar, getUserProfile }) {
           placeholder="Search Friends"
         />
       </div>
-      <ListUser
-        setSidebar={setSidebar}
-        getUserProfile={getUserProfile}
-        users={users}
-      />
+      {users.users.length !== 0 ? (
+        <ListUser
+          setSidebar={setSidebar}
+          getUserProfile={getUserProfile}
+          users={users}
+          isLoading={isLoading}
+        />
+      ) : (
+        <button onClick={() => setSidebar("users")}>Find Friends</button>
+      )}
     </div>
   );
 }
