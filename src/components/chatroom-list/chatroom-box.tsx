@@ -1,8 +1,15 @@
 import useAuth from "../../hooks/useAuth";
 import ChatroomDropdown from "./chatroom-dropdown";
+import { Chatroom } from "../../types/types";
 import "./chatroom-list.css";
 
-export default function ChatroomBox({ chat, setChatroom, refetch }) {
+type ChatroomBoxProps = {
+  chat: Chatroom;
+  setChatroom: any;
+  refetch: any;
+}
+
+export default function ChatroomBox({ chat, setChatroom, refetch }:ChatroomBoxProps) {
   const { auth } = useAuth();
 
   function onClickSetChatroom(e) {

@@ -1,8 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { pinChatroom, leaveChatroom } from "../../api/messages";
+import { Chatroom } from "../../types/types";
 import "./chatroom-list.css";
 
-export default function ChatroomDropdown({ refetch, chat }) {
+type ChatroomDropdownProps = {
+  refetch: any;
+  chat: Chatroom;
+};
+
+export default function ChatroomDropdown({
+  refetch,
+  chat,
+}: ChatroomDropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef<null | HTMLDivElement>(null);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
@@ -19,7 +28,7 @@ export default function ChatroomDropdown({ refetch, chat }) {
     refetch();
   }
 
-  function handleOutsideClick(e) {
+  function handleOutsideClick(e: MouseEvent) {
     if (
       dropdownRef.current &&
       !dropdownRef.current.contains(e.target) &&
@@ -29,7 +38,7 @@ export default function ChatroomDropdown({ refetch, chat }) {
     }
   }
 
-  function stopPropagation(e) {
+  function stopPropagation(e: MouseEvent) {
     e.stopPropagation();
   }
 

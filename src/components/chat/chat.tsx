@@ -9,12 +9,12 @@ import useAuth from "../../hooks/useAuth";
 import "./chat.css";
 import ImageUpload from "./image-upload";
 
-interface Props {
+interface ChatProps {
   setSidebar: any;
   getUserProfile: any;
 }
 
-export default memo(function Chat({ setSidebar, getUserProfile }: Props) {
+export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
   const { chatroom, chatroomLoading } = useChat();
   const { auth } = useAuth();
   const { refetch } = useSetChatroom();

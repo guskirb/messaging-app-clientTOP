@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { postImgMessage } from "../../api/messages";
 import { Chatroom } from "../../types/types";
 
-type Props = {
+type ImageUploadProps = {
   chatroom: Chatroom;
   refetch: any;
   messageFetch: any;
@@ -12,7 +12,7 @@ export default function ImageUpload({
   chatroom,
   refetch,
   messageFetch,
-}: Props) {
+}: ImageUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleImageClick() {

@@ -24,6 +24,7 @@ export type Chatroom = {
   pinned: boolean;
   users: Array<User>;
   name?: string;
+  last_message: string;
 };
 
 export type Message = {
