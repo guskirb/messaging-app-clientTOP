@@ -1,28 +1,41 @@
 import { useEffect, useRef, useState } from "react";
 import { addFriend, removeFriend } from "../../api/user";
+import { User } from "../../types/types";
 
-export default function ListUserDropdown({ user, friends, refetch }) {
+type ListUserDropdownProps = {
+  user: User;
+  friends: {
+    users: Array<User>;
+  };
+  refetch: any;
+};
+
+export default function ListUserDropdown({
+  user,
+  friends,
+  refetch,
+}: ListUserDropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  async function onClickAdd(id) {
+  async function onClickAdd(id: string) {
     setShowDropdown(false);
     await addFriend(id);
     refetch();
   }
 
-  async function onClickRemove(id) {
+  async function onClickRemove(id: string) {
     setShowDropdown(false);
     await removeFriend(id);
     refetch();
   }
 
-  function stopPropagation(e) {
+  function stopPropagation(e: MouseEvent) {
     e.stopPropagation();
   }
 
-  function onClickShow(e) {
+  function onClickShow(e: MouseEvent) {
     e.stopPropagation();
     setShowDropdown(true);
   }
@@ -56,17 +69,17 @@ export default function ListUserDropdown({ user, friends, refetch }) {
           <ul>
             <li
               onClick={
-                friends.users.some(e => e._id === user._id)
+                friends.users.some((e) => e._id === user._id)
                   ? () => onClickRemove(user._id)
                   : () => onClickAdd(user._id)
               }
             >
-              {friends.users.some(e => e._id === user._id)
+              {friends.users.some((e) => e._id === user._id)
                 ? "Remove Friend"
                 : "Add Friend"}
               <div
                 className={
-                  friends.users.some(e => e._id === user._id)
+                  friends.users.some((e) => e._id === user._id)
                     ? "remove-friend-icon icon"
                     : "add-friend-icon icon"
                 }

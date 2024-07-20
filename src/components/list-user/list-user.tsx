@@ -2,13 +2,23 @@ import ListUserDropdown from "./list-user-dropdown";
 import useAuth from "../../hooks/useAuth";
 import useGetFriends from "../../hooks/useGetFriends";
 import "./list-user.css";
+import { User } from "../../types/types";
+
+type ListUserProps = {
+  setSidebar: any;
+  getUserProfile: any;
+  users: {
+    users: Array<User>;
+  };
+  isLoading: boolean;
+};
 
 export default function ListUser({
   setSidebar,
   getUserProfile,
   users,
   isLoading,
-}) {
+}: ListUserProps) {
   const { auth } = useAuth();
   const { users: friends, refetch } = useGetFriends();
 
@@ -44,13 +54,15 @@ export default function ListUser({
           </p>
           <div
             className={
-              friends?.users?.some((e) => e._id === user._id) ? "friend-icon" : ""
+              friends?.users?.some((user: User) => user._id === user._id)
+                ? "friend-icon"
+                : ""
             }
           ></div>
         </div>
         <p className="user-last-online">{user.last_online_formatted}</p>
       </div>
-      {user._id !== auth.user._id && (
+      {user._id !== auth?.user._id && (
         <ListUserDropdown user={user} friends={friends} refetch={refetch} />
       )}
     </div>
