@@ -29,7 +29,7 @@ export const getAllUsers = async () => {
     .catch((error) => error.response.data);
 };
 
-export const getUser = async (id) => {
+export const getUser = async (id: string) => {
   return axios
     .get(`/users/${id}`)
     .then((response) => response.data)
@@ -43,14 +43,14 @@ export const getSelf = async () => {
     .catch((error) => error.response.data);
 };
 
-export const addFriend = async (id) => {
+export const addFriend = async (id: string) => {
   return axios
     .post(`/users/${id}/add`)
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };
 
-export const removeFriend = async (id) => {
+export const removeFriend = async (id: string) => {
   return axios
     .post(`/users/${id}/remove`)
     .then((response) => response.data)
@@ -64,7 +64,7 @@ export const getFriends = async () => {
     .catch((error) => error.response.data);
 };
 
-export const setLocalStorage = (response) => {
+export const setLocalStorage = (response: any) => {
   const expires = moment().add(response.expires);
 
   localStorage.setItem("token", response.token);

@@ -9,6 +9,11 @@ import useAuth from "../../hooks/useAuth";
 import "./chat.css";
 import ImageUpload from "./image-upload";
 
+interface ChatProps {
+  setSidebar: any;
+  getUserProfile: any;
+}
+
 export default memo(function Chat({ setSidebar, getUserProfile }) {
   const { chatroom, chatroomLoading } = useChat();
   const { auth } = useAuth();
@@ -19,13 +24,13 @@ export default memo(function Chat({ setSidebar, getUserProfile }) {
     refetch: messageFetch,
   } = useQuery({
     queryKey: [chatroom?._id],
-    queryFn: () => getMessages(chatroom?._id),
+    queryFn: () => getMessages(chatroom?._id!),
     enabled: !!chatroom?._id,
   });
 
   async function onSend(e) {
     e.preventDefault();
-    let response = await postMessage(chatroom?._id, {
+    let response = await postMessage(chatroom?._id!, {
       message: e.target[0].value,
     });
 
@@ -43,7 +48,7 @@ export default memo(function Chat({ setSidebar, getUserProfile }) {
       ? "Empty Room"
       : chatroom.users
           .filter((user) => {
-            if (user._id !== auth.user._id) {
+            if (user._id !== auth?.user._id) {
               return user;
             }
           })
@@ -64,7 +69,7 @@ export default memo(function Chat({ setSidebar, getUserProfile }) {
           src={
             chatroom?.users?.length === 2
               ? chatroom.users.filter((user) => {
-                  if (user._id !== auth.user._id) {
+                  if (user._id !== auth?.user._id) {
                     return user;
                   }
                 })[0].image
@@ -83,13 +88,13 @@ export default memo(function Chat({ setSidebar, getUserProfile }) {
       />
       <form action="" className="input__container" onSubmit={onSend}>
         <input type="text" name="message" placeholder="Enter Message..." />
-        <button>enter</button>
-      </form>
-      <ImageUpload
+        <ImageUpload
           chatroom={chatroom}
           refetch={refetch}
           messageFetch={messageFetch}
         />
+        <button>enter</button>
+      </form>
     </div>
   );
 });

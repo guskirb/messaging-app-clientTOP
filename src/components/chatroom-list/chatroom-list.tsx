@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import ChatroomModal from "./chatroom-modal";
 import ChatroomBox from "./chatroom-box";
 import useChat from "../../hooks/useChat";

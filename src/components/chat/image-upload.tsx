@@ -14,12 +14,11 @@ export default function ImageUpload({ chatroom, refetch, messageFetch }) {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
-    
+
     let response = await postImgMessage(chatroom?._id, formData);
     if (response?.success) {
       refetch();
       messageFetch();
-      e.target[0].value = "";
     }
   }
 

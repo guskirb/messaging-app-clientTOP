@@ -1,7 +1,16 @@
-import { ReactNode, createContext, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
 import useSetChatroom from "../hooks/useSetChatroom";
+import { Chatroom } from "../types/types";
 
-export const ChatContext = createContext({});
+interface ChatContextInterface {
+  chatrooms?: object;
+  chatroomLoading?: boolean;
+  chatroom?: Chatroom | null;
+  setChatroom?: Dispatch<SetStateAction<Chatroom | null>>;
+  refetch?: any;
+}
+
+export const ChatContext = createContext<ChatContextInterface>({});
 
 interface Props {
   children?: ReactNode;

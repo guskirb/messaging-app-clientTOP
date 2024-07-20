@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { getChatrooms } from "../api/messages";
+import { Chatroom } from "../types/types";
 
 export default function useSetChatroom() {
   const {
@@ -11,7 +12,7 @@ export default function useSetChatroom() {
     queryKey: ["chatrooms"],
     queryFn: getChatrooms,
   });
-  const [chatroom, setChatroom] = useState({});
+  const [chatroom, setChatroom] = useState<Chatroom | null>(null);
 
   useEffect(() => {
     setChatroom(chatrooms?.chatrooms[0]);

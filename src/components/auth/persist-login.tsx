@@ -15,7 +15,7 @@ export default function PersistLogin() {
         setAuth(user);
       } else {
         logOut();
-        setAuth(undefined);
+        setAuth(null);
       }
       setLoading(false);
     };

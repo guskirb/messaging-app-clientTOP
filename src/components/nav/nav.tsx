@@ -56,7 +56,7 @@ export default function Nav({
         <div className="settings-button nav-button"></div>
         <img
           className="nav__profile-img"
-          src={auth.user.image}
+          src={auth?.user?.image}
           alt=""
           onClick={() => {
             setSidebar("profile");

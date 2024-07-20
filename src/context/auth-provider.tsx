@@ -1,13 +1,29 @@
-import { ReactNode, createContext, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useState,
+} from "react";
 
-export const AuthContext = createContext({});
+import { User } from "../types/types";
+
+interface AuthContextInterface {
+  auth: { user: User } | null;
+  setAuth: Dispatch<SetStateAction<{ user: User } | null>>;
+}
+
+export const AuthContext = createContext<AuthContextInterface>({
+  auth: null,
+  setAuth: () => {},
+});
 
 interface Props {
   children?: ReactNode;
 }
 
 export function AuthProvider({ children }: Props) {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState<{ user: User } | null>(null);
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
