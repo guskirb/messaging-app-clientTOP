@@ -3,11 +3,7 @@ import { getAllUsers } from "../../api/user";
 import ListUser from "../list-user/list-user";
 
 export default function Users({ setSidebar, getUserProfile }) {
-  const {
-    data: users,
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: users, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: getAllUsers,
   });

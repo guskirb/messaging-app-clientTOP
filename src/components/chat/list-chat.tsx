@@ -1,14 +1,24 @@
 import useAuth from "../../hooks/useAuth";
 import { useRef, useEffect } from "react";
+import { Message } from "../../types/types";
+
+type Props = {
+  messages: {
+    messages: Array<Message>;
+  };
+  isLoading: boolean;
+  setSidebar: any;
+  getUserProfile: any;
+};
 
 export default function ListChat({
   messages,
   isLoading,
   setSidebar,
   getUserProfile,
-}) {
+}: Props) {
   const { auth } = useAuth();
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -16,7 +26,7 @@ export default function ListChat({
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isLoading]);
 
   const listMessages = messages?.messages.map((message, index) => (
     <>
@@ -30,7 +40,7 @@ export default function ListChat({
       )}
       <div
         key={message._id}
-        className={message.user?._id === auth.user._id ? "user-me" : ""}
+        className={message.user?._id === auth?.user._id ? "user-me" : ""}
       >
         <div className="message-box">
           {message.message && <p>{message.message}</p>}

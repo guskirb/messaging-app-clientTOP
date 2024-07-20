@@ -18,7 +18,7 @@ export default function ChatroomBox({ chat, setChatroom, refetch }) {
         src={
           chat.users.length === 2
             ? chat.users.filter((user) => {
-                if (user._id !== auth.user._id) {
+                if (user._id !== auth?.user._id) {
                   return user;
                 }
               })[0].image
@@ -36,7 +36,7 @@ export default function ChatroomBox({ chat, setChatroom, refetch }) {
                 ? "Empty Room"
                 : chat.users
                     .filter((user) => {
-                      if (user._id !== auth.user._id) {
+                      if (user._id !== auth?.user._id) {
                         return user;
                       }
                     })

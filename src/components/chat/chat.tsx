@@ -2,19 +2,19 @@ import ListChat from "./list-chat";
 import { useQuery } from "@tanstack/react-query";
 import { getMessages } from "../../api/messages";
 import useChat from "../../hooks/useChat";
-import { memo } from "react";
+import { FormEvent, memo } from "react";
 import { postMessage } from "../../api/messages";
 import useSetChatroom from "../../hooks/useSetChatroom";
 import useAuth from "../../hooks/useAuth";
 import "./chat.css";
 import ImageUpload from "./image-upload";
 
-interface ChatProps {
+interface Props {
   setSidebar: any;
   getUserProfile: any;
 }
 
-export default memo(function Chat({ setSidebar, getUserProfile }) {
+export default memo(function Chat({ setSidebar, getUserProfile }: Props) {
   const { chatroom, chatroomLoading } = useChat();
   const { auth } = useAuth();
   const { refetch } = useSetChatroom();
@@ -28,7 +28,11 @@ export default memo(function Chat({ setSidebar, getUserProfile }) {
     enabled: !!chatroom?._id,
   });
 
-  async function onSend(e) {
+  async function onSend(
+    e: FormEvent<HTMLFormElement> & {
+      target: any;
+    }
+  ) {
     e.preventDefault();
     let response = await postMessage(chatroom?._id!, {
       message: e.target[0].value,
@@ -89,7 +93,7 @@ export default memo(function Chat({ setSidebar, getUserProfile }) {
       <form action="" className="input__container" onSubmit={onSend}>
         <input type="text" name="message" placeholder="Enter Message..." />
         <ImageUpload
-          chatroom={chatroom}
+          chatroom={chatroom!}
           refetch={refetch}
           messageFetch={messageFetch}
         />

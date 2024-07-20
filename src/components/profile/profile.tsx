@@ -8,7 +8,7 @@ export default function Profile({
   profile: any;
   loading: boolean;
 }) {
-  const { users: friends, refetch } = useGetFriends();
+  const { users: friends } = useGetFriends();
 
   if (loading) {
     return <p>Loading...</p>;
@@ -21,7 +21,7 @@ export default function Profile({
         <h2>{profile.user.username}</h2>
         <div
           className={
-            friends?.users?.some((e) => e._id === profile.user._id)
+            friends?.users?.some((user) => user._id === profile.user._id)
               ? "friend-icon"
               : ""
           }

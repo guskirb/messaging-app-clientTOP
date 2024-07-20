@@ -1,7 +1,18 @@
 import { useRef } from "react";
 import { postImgMessage } from "../../api/messages";
+import { Chatroom } from "../../types/types";
 
-export default function ImageUpload({ chatroom, refetch, messageFetch }) {
+type Props = {
+  chatroom: Chatroom;
+  refetch: any;
+  messageFetch: any;
+};
+
+export default function ImageUpload({
+  chatroom,
+  refetch,
+  messageFetch,
+}: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleImageClick() {
@@ -15,7 +26,7 @@ export default function ImageUpload({ chatroom, refetch, messageFetch }) {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
 
-    let response = await postImgMessage(chatroom?._id, formData);
+    let response = await postImgMessage(chatroom._id, formData);
     if (response?.success) {
       refetch();
       messageFetch();

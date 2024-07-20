@@ -4,16 +4,16 @@ import "./chatroom-list.css";
 
 export default function ChatroomDropdown({ refetch, chat }) {
   const [showDropdown, setShowDropdown] = useState(false);
-  const buttonRef = useRef(null);
-  const dropdownRef = useRef(null);
+  const buttonRef = useRef<null | HTMLDivElement>(null);
+  const dropdownRef = useRef<null | HTMLDivElement>(null);
 
-  async function onClickPin(id) {
+  async function onClickPin(id: string) {
     setShowDropdown(false);
     await pinChatroom(id);
     refetch();
   }
 
-  async function onClickLeave(id) {
+  async function onClickLeave(id: string) {
     setShowDropdown(false);
     await leaveChatroom(id);
     refetch();

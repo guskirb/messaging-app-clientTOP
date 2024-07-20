@@ -25,3 +25,16 @@ export type Chatroom = {
   users: Array<User>;
   name?: string;
 };
+
+export type Message = {
+  id: string;
+  _id: string;
+  date: string;
+  date_formatted: {
+    date: string;
+    time: string;
+  };
+  message: string;
+  user: User;
+  image: string;
+};
