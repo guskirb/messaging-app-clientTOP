@@ -4,13 +4,13 @@ import { Chatroom } from "../../types/types";
 
 type ImageUploadProps = {
   chatroom: Chatroom;
-  refetch: any;
+  chatroomRefetch: any;
   messageFetch: any;
 };
 
 export default function ImageUpload({
   chatroom,
-  refetch,
+  chatroomRefetch,
   messageFetch,
 }: ImageUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,7 +28,7 @@ export default function ImageUpload({
 
     let response = await postImgMessage(chatroom._id, formData);
     if (response?.success) {
-      refetch();
+      chatroomRefetch();
       messageFetch();
     }
   }

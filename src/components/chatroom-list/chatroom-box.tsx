@@ -6,10 +6,14 @@ import "./chatroom-list.css";
 type ChatroomBoxProps = {
   chat: Chatroom;
   setChatroom: any;
-  refetch: any;
-}
+  chatroomRefetch: any;
+};
 
-export default function ChatroomBox({ chat, setChatroom, refetch }:ChatroomBoxProps) {
+export default function ChatroomBox({
+  chat,
+  setChatroom,
+  chatroomRefetch,
+}: ChatroomBoxProps) {
   const { auth } = useAuth();
 
   function onClickSetChatroom(e) {
@@ -68,7 +72,11 @@ export default function ChatroomBox({ chat, setChatroom, refetch }:ChatroomBoxPr
           </p>
         </div>
       </div>
-      <ChatroomDropdown refetch={refetch} chat={chat} />
+      <ChatroomDropdown
+        chatroomRefetch={chatroomRefetch}
+        chat={chat}
+        setChatroom={setChatroom}
+      />
       <p className="chat-last-active">{chat.last_active_formatted}</p>
     </div>
   );

@@ -7,7 +7,7 @@ interface ChatContextInterface {
   chatroomLoading?: boolean;
   chatroom?: Chatroom | null;
   setChatroom?: Dispatch<SetStateAction<Chatroom | null>>;
-  refetch?: any;
+  chatroomRefetch?: any;
 }
 
 export const ChatContext = createContext<ChatContextInterface>({});
@@ -17,12 +17,23 @@ interface Props {
 }
 
 export function ChatProvider({ children }: Props) {
-  const { chatrooms, chatroomLoading, chatroom, setChatroom, refetch } =
-    useSetChatroom();
+  const {
+    chatrooms,
+    chatroomLoading,
+    chatroom,
+    setChatroom,
+    chatroomRefetch,
+  } = useSetChatroom();
 
   return (
     <ChatContext.Provider
-      value={{ chatrooms, chatroomLoading, chatroom, setChatroom, refetch }}
+      value={{
+        chatrooms,
+        chatroomLoading,
+        chatroom,
+        setChatroom,
+        chatroomRefetch,
+      }}
     >
       {children}
     </ChatContext.Provider>

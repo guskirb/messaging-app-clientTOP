@@ -4,10 +4,10 @@ import { getMessages } from "../../api/messages";
 import useChat from "../../hooks/useChat";
 import { FormEvent, memo } from "react";
 import { postMessage } from "../../api/messages";
-import useSetChatroom from "../../hooks/useSetChatroom";
 import useAuth from "../../hooks/useAuth";
 import "./chat.css";
 import ImageUpload from "./image-upload";
+import FindChat from "./find-chat";
 
 interface ChatProps {
   setSidebar: any;
@@ -15,9 +15,8 @@ interface ChatProps {
 }
 
 export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
-  const { chatroom, chatroomLoading } = useChat();
+  const { chatroom, chatroomLoading, chatroomRefetch } = useChat();
   const { auth } = useAuth();
-  const { refetch } = useSetChatroom();
   const {
     data: messages,
     isLoading,
@@ -39,7 +38,7 @@ export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
     });
 
     if (response?.success) {
-      refetch();
+      chatroomRefetch();
       messageFetch();
       e.target[0].value = "";
     }
@@ -63,6 +62,10 @@ export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
 
   if (isLoading || chatroomLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (chatroom === null) {
+    return <FindChat />;
   }
 
   return (
@@ -89,12 +92,13 @@ export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
         isLoading={isLoading}
         setSidebar={setSidebar}
         getUserProfile={getUserProfile}
+        chatroom={chatroom!}
       />
       <form action="" className="input__container" onSubmit={onSend}>
         <input type="text" name="message" placeholder="Enter Message..." />
         <ImageUpload
           chatroom={chatroom!}
-          refetch={refetch}
+          chatroomRefetch={chatroomRefetch}
           messageFetch={messageFetch}
         />
         <button>enter</button>

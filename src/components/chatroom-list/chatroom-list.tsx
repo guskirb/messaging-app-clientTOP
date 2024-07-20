@@ -5,12 +5,10 @@ import useChat from "../../hooks/useChat";
 import "./chatroom-list.css";
 
 export default function ChatroomList({}) {
-  const { chatrooms, chatroomLoading, setChatroom, refetch } = useChat();
+  const { chatrooms, chatroomLoading, setChatroom, chatroomRefetch } = useChat();
   const [showModal, setShowModal] = useState(false);
 
   function onClick() {
-    // await createChatroom();
-    // refetch();
     setShowModal(true);
   }
 
@@ -28,7 +26,7 @@ export default function ChatroomList({}) {
       <ChatroomBox
         chat={chat}
         setChatroom={setChatroom}
-        refetch={refetch}
+        chatroomRefetch={chatroomRefetch}
         key={chat._id}
       />
     ));
@@ -39,7 +37,7 @@ export default function ChatroomList({}) {
       <ChatroomBox
         chat={chat}
         setChatroom={setChatroom}
-        refetch={refetch}
+        chatroomRefetch={chatroomRefetch}
         key={chat._id}
       />
     ));
@@ -49,7 +47,7 @@ export default function ChatroomList({}) {
       {showModal && (
         <ChatroomModal
           setShowModal={setShowModal}
-          refetch={refetch}
+          chatroomRefetch={chatroomRefetch}
           setChatroom={setChatroom}
           chatrooms={chatrooms}
         />

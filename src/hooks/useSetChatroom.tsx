@@ -7,22 +7,27 @@ export default function useSetChatroom() {
   const {
     data: chatrooms,
     isLoading: chatroomLoading,
-    refetch,
+    refetch: chatroomRefetch,
   } = useQuery({
     queryKey: ["chatrooms"],
     queryFn: getChatrooms,
   });
   const [chatroom, setChatroom] = useState<Chatroom | null>(null);
 
+  async function setChat() {
+    setChatroom(chatrooms.chatrooms[0]);
+  }
+
   useEffect(() => {
-    setChatroom(chatrooms?.chatrooms[0]);
-  }, []);
+    chatrooms?.chatrooms.length > 0 ? setChat() : setChatroom(null);
+  }, [chatroomLoading]);
 
   return {
     chatrooms,
     chatroomLoading,
     chatroom,
     setChatroom,
-    refetch,
+    chatroomRefetch,
+    setChat
   };
 }

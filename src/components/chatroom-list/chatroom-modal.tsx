@@ -4,7 +4,7 @@ import "./chatroom-list.css";
 
 export default function ChatroomModal({
   setShowModal,
-  refetch,
+  chatroomRefetch,
   setChatroom,
   chatrooms,
 }) {
@@ -19,12 +19,14 @@ export default function ChatroomModal({
     }
     setShowModal(false);
   }
-  console.log(chatrooms);
+
   async function makeChatroom(id) {
     setShowModal(false);
     let response = await createChatroom({ user: id });
     if (response?.success) {
-      refetch();
+      chatroomRefetch();
+      console.log(response)
+      setChatroom(response.chatroom);
     }
   }
 

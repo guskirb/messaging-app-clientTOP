@@ -4,13 +4,15 @@ import { Chatroom } from "../../types/types";
 import "./chatroom-list.css";
 
 type ChatroomDropdownProps = {
-  refetch: any;
+  chatroomRefetch: any;
   chat: Chatroom;
+  setChatroom: any;
 };
 
 export default function ChatroomDropdown({
-  refetch,
+  chatroomRefetch,
   chat,
+  setChatroom,
 }: ChatroomDropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef<null | HTMLDivElement>(null);
@@ -19,13 +21,19 @@ export default function ChatroomDropdown({
   async function onClickPin(id: string) {
     setShowDropdown(false);
     await pinChatroom(id);
-    refetch();
+    chatroomRefetch();
   }
 
   async function onClickLeave(id: string) {
     setShowDropdown(false);
     await leaveChatroom(id);
-    refetch();
+    const response = await chatroomRefetch();
+    
+    if (response.data.chatrooms.length > 0) {
+      setChatroom(response.data.chatrooms[0]);
+    } else {
+      setChatroom(null);
+    }
   }
 
   function handleOutsideClick(e: MouseEvent) {
