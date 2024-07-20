@@ -64,6 +64,13 @@ export const getFriends = async () => {
     .catch((error) => error.response.data);
 };
 
+export const uploadProfile = async (id: string, data: any) => {
+  return axios
+    .post(`/users/${id}/upload`, data)
+    .then((response) => response.data)
+    .catch((error) => error.response.data);
+};
+
 export const setLocalStorage = (response: any) => {
   const expires = moment().add(response.expires);
 

@@ -20,7 +20,13 @@ export default function Sidebar({
   const renderSidebar = () => {
     switch (content) {
       case "profile":
-        return <Profile profile={profile} loading={loading} />;
+        return (
+          <Profile
+            profile={profile}
+            loading={loading}
+            getUserProfile={getUserProfile}
+          />
+        );
       case "chatrooms":
         return <ChatroomList />;
       case "friends":

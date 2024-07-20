@@ -29,3 +29,17 @@
 .online-profile {
   position: static !important;
 }
+
+.profile-upload {
+  background: url("../../assets/edit-pen.svg");
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  background-color: red;
+  border-radius: 50%;
+  transform: translateY(15px) translateX(35px);
+  cursor: pointer;
+}
