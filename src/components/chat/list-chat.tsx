@@ -1,6 +1,8 @@
 import useAuth from "../../hooks/useAuth";
 import { useRef, useEffect, Fragment } from "react";
 import { Chatroom, Message } from "../../types/types";
+import useGetFriends from "../../hooks/useGetFriends";
+import { User } from "../../types/types";
 
 type Props = {
   messages: {
@@ -21,6 +23,7 @@ export default function ListChat({
 }: Props) {
   const { auth } = useAuth();
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const { users: friends } = useGetFriends();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView();
@@ -78,6 +81,13 @@ export default function ListChat({
                 >
                   {message.user.username}
                 </p>
+                <div
+                  className={
+                    friends?.users?.some((item: User) => item._id === message.user._id)
+                      ? "friend-icon"
+                      : ""
+                  }
+                ></div>
               </div>
             ) : (
               ""

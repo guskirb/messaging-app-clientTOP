@@ -1,15 +1,13 @@
 import useAuth from "../../hooks/useAuth";
 import "./nav.css";
 
-export default function Nav({
-  sidebar,
-  setSidebar,
-  setProfile,
-}: {
+type NavProps = {
   sidebar: string;
   setSidebar: any;
   setProfile: any;
-}) {
+};
+
+export default function Nav({ sidebar, setSidebar, setProfile }: NavProps) {
   const { auth }: any = useAuth();
 
   return (

@@ -9,6 +9,7 @@ export type User = {
   id: string;
   _id: string;
   join_date: string;
+  join_date_formatted: string;
   last_online: string;
   last_online_formatted: string;
   username: string;

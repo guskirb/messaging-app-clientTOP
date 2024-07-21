@@ -1,36 +1,43 @@
 import useGetFriends from "../../hooks/useGetFriends";
-import { createChatroom, addToChatroom } from "../../api/messages";
+import { createChatroom } from "../../api/messages";
+import React from "react";
 import "./chatroom-list.css";
+import { User } from "../../types/types";
+
+type ChatroomModalProps = {
+  setShowModal: any;
+  chatroomRefetch: any;
+  setChatroom: any;
+};
 
 export default function ChatroomModal({
   setShowModal,
   chatroomRefetch,
   setChatroom,
-  chatrooms,
-}) {
+}: ChatroomModalProps) {
   const { users, isLoading } = useGetFriends();
 
-  function closeModal(e) {
+  function closeModal(e: React.MouseEvent) {
     if (
-      e.target.className !== "modal__background" &&
-      e.target.className !== "modal__button"
+      (e.target as Element).className !== "modal__background" &&
+      (e.target as Element).className !== "modal__button"
     ) {
       return;
     }
     setShowModal(false);
   }
 
-  async function makeChatroom(id) {
+  async function makeChatroom(id: string) {
     setShowModal(false);
     let response = await createChatroom({ user: id });
     if (response?.success) {
       chatroomRefetch();
-      console.log(response)
+      console.log(response);
       setChatroom(response.chatroom);
     }
   }
 
-  const listUsers = users?.users.map((user) => (
+  const listUsers = users?.users.map((user: User) => (
     <div
       key={user._id}
       className={

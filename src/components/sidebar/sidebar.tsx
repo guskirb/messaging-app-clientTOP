@@ -3,6 +3,19 @@ import Profile from "../profile/profile";
 import ChatroomList from "../chatroom-list/chatroom-list";
 import Friends from "../friends/friends";
 import Users from "../users/users";
+import { User } from "../../types/types";
+
+type SidebarProps = {
+  content: string;
+  profile: {
+    user: User;
+  };
+  setSidebar: any;
+  getUserProfile: any;
+  loading: boolean;
+  setShowModal: any;
+  showModal: boolean;
+};
 
 export default function Sidebar({
   content,
@@ -11,16 +24,8 @@ export default function Sidebar({
   getUserProfile,
   loading,
   setShowModal,
-  showModal
-}: {
-  content: string;
-  profile: any;
-  setSidebar: any;
-  getUserProfile: any;
-  loading: boolean;
-  setShowModal: any;
-  showModal: boolean;
-}) {
+  showModal,
+}: SidebarProps) {
   const renderSidebar = () => {
     switch (content) {
       case "profile":

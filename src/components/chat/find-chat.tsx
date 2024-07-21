@@ -1,4 +1,13 @@
-export default function FindChat({ auth, setShowModal }) {
+import { User } from "../../types/types";
+
+type FindChatProps = {
+  auth: {
+    user: User;
+  };
+  setShowModal: any;
+};
+
+export default function FindChat({ auth, setShowModal }: FindChatProps) {
   return (
     <div className="no-chats__container">
       <div className="no-chat-message__container">

@@ -11,7 +11,7 @@ const schema = z
     password: z
       .string()
       .min(5, { message: "Password must contain at least 5 characters" }),
-    confirm: z.string(),
+    confirm: z.string().optional(),
   })
   .refine((data) => data.password === data.confirm, {
     message: "Passwords don't match",

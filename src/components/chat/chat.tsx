@@ -71,7 +71,7 @@ export default memo(function Chat({
   }
 
   if (chatroom === null) {
-    return <FindChat auth={auth} setShowModal={setShowModal} />;
+    return <FindChat auth={auth!} setShowModal={setShowModal} />;
   }
 
   return (

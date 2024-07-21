@@ -1,7 +1,12 @@
 import ListUser from "../list-user/list-user";
 import useGetFriends from "../../hooks/useGetFriends";
 
-export default function Friends({ setSidebar, getUserProfile }) {
+type FriendsProps = {
+  setSidebar: any;
+  getUserProfile: any;
+};
+
+export default function Friends({ setSidebar, getUserProfile }: FriendsProps) {
   const { users, isLoading } = useGetFriends();
 
   if (isLoading) {

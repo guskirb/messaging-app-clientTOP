@@ -1,7 +1,15 @@
-import { useRef } from "react";
+import { ChangeEvent, useRef } from "react";
 import { uploadProfile } from "../../api/user";
 
-export default function ProfileImgUpload({ id, getUserProfile }) {
+type ProfileImgUploadProps = {
+  id: string;
+  getUserProfile: any;
+};
+
+export default function ProfileImgUpload({
+  id,
+  getUserProfile,
+}: ProfileImgUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleImageClick() {
@@ -10,10 +18,10 @@ export default function ProfileImgUpload({ id, getUserProfile }) {
     }
   }
 
-  async function handleImageChange(e) {
+  async function handleImageChange(e: ChangeEvent) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("image", e.target.files[0]);
+    formData.append("image", (e.target as HTMLInputElement).files![0]);
 
     let response = await uploadProfile(id, formData);
     if (response?.success) {

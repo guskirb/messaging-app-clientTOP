@@ -1,11 +1,18 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { leaveChatroom } from "../../api/messages";
+import { Chatroom } from "../../types/types";
+
+type ChatDropdownProps = {
+  chatroom: Chatroom;
+  setChatroom: any;
+  chatroomRefetch: any;
+};
 
 export default function ChatDropdown({
   chatroom,
   setChatroom,
   chatroomRefetch,
-}) {
+}: ChatDropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef<null | HTMLDivElement>(null);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
@@ -22,17 +29,17 @@ export default function ChatDropdown({
     }
   }
 
-  function handleOutsideClick(e: MouseEvent) {
+  function handleOutsideClick({ target }: MouseEvent) {
     if (
       dropdownRef.current &&
-      !dropdownRef.current.contains(e.target) &&
-      e.target !== buttonRef.current
+      !dropdownRef.current.contains(target as Node) &&
+      target !== buttonRef.current
     ) {
       setShowDropdown(false);
     }
   }
 
-  function stopPropagation(e: MouseEvent) {
+  function stopPropagation(e: React.MouseEvent) {
     e.stopPropagation();
   }
 
@@ -58,7 +65,7 @@ export default function ChatDropdown({
         >
           <ul>
             <li>Rename Chat</li>
-            <li>Add user</li>
+            <li>Add User</li>
             <li onClick={() => onClickLeave(chatroom._id)}>
               Leave<div className="leave-icon icon"></div>
             </li>

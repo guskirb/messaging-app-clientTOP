@@ -15,7 +15,7 @@ export default function Home() {
       <Nav sidebar={sidebar} setSidebar={setSidebar} setProfile={setProfile} />
       <Sidebar
         content={sidebar}
-        profile={profile}
+        profile={profile!}
         setSidebar={setSidebar}
         getUserProfile={getUserProfile}
         loading={loading}
@@ -26,7 +26,6 @@ export default function Home() {
         setSidebar={setSidebar}
         getUserProfile={getUserProfile}
         setShowModal={setShowModal}
-        showModal={showModal}
       />
     </div>
   );

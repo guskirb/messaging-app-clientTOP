@@ -1,6 +1,7 @@
 import useAuth from "../../hooks/useAuth";
 import ChatroomDropdown from "./chatroom-dropdown";
 import { Chatroom } from "../../types/types";
+import React from "react";
 import "./chatroom-list.css";
 
 type ChatroomBoxProps = {
@@ -16,12 +17,12 @@ export default function ChatroomBox({
 }: ChatroomBoxProps) {
   const { auth } = useAuth();
 
-  function onClickSetChatroom(e) {
-    if (e.target.className !== "more-button") {
+  function onClickSetChatroom(e: React.MouseEvent) {
+    if ((e.target as Element).className !== "more-button") {
       setChatroom(chat);
     }
   }
-  
+
   return (
     <div className="chatroom__container" onClick={onClickSetChatroom}>
       <img
@@ -59,9 +60,7 @@ export default function ChatroomBox({
           <div className={chat.pinned ? "pin-icon icon" : ""}></div>
         </div>
         <div className="last-message__container">
-          {chat.message_type === "img" && (
-            <div className="recent-img"></div>
-          )}
+          {chat.message_type === "img" && <div className="recent-img"></div>}
           <p>
             {chat.last_message ? (
               chat.last_message.length > 20 ? (

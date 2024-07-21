@@ -2,7 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllUsers } from "../../api/user";
 import ListUser from "../list-user/list-user";
 
-export default function Users({ setSidebar, getUserProfile }) {
+type UserProps = {
+  setSidebar: any;
+  getUserProfile: any;
+};
+
+export default function Users({ setSidebar, getUserProfile }: UserProps) {
   const { data: users, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: getAllUsers,

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { addFriend, removeFriend } from "../../api/user";
 import { User } from "../../types/types";
 
@@ -16,8 +16,8 @@ export default function ListUserDropdown({
   refetch,
 }: ListUserDropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false);
-  const buttonRef = useRef(null);
-  const dropdownRef = useRef(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   async function onClickAdd(id: string) {
     setShowDropdown(false);
@@ -31,20 +31,20 @@ export default function ListUserDropdown({
     refetch();
   }
 
-  function stopPropagation(e: MouseEvent) {
+  function stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
     e.stopPropagation();
   }
 
-  function onClickShow(e: MouseEvent) {
+  function onClickShow(e: React.MouseEvent<HTMLDivElement>) {
     e.stopPropagation();
     setShowDropdown(true);
   }
 
-  function handleOutsideClick(e) {
+  function handleOutsideClick({ target }: MouseEvent) {
     if (
       dropdownRef.current &&
-      !dropdownRef.current.contains(e.target) &&
-      e.target !== buttonRef.current
+      !dropdownRef.current.contains(target as Node) &&
+      target !== buttonRef.current
     ) {
       setShowDropdown(false);
     }

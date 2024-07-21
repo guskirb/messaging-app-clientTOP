@@ -3,7 +3,15 @@ import ChatroomBox from "./chatroom-box";
 import useChat from "../../hooks/useChat";
 import "./chatroom-list.css";
 
-export default function ChatroomList({ setShowModal, showModal }) {
+type ChatroomListProps = {
+  setShowModal: any;
+  showModal: boolean;
+};
+
+export default function ChatroomList({
+  setShowModal,
+  showModal,
+}: ChatroomListProps) {
   const { chatrooms, chatroomLoading, setChatroom, chatroomRefetch } =
     useChat();
 

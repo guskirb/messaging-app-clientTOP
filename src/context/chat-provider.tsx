@@ -3,7 +3,9 @@ import useSetChatroom from "../hooks/useSetChatroom";
 import { Chatroom } from "../types/types";
 
 export interface ChatContextInterface {
-  chatrooms?: object;
+  chatrooms?: {
+    chatrooms: Array<Chatroom>;
+  };
   chatroomLoading?: boolean;
   chatroom?: Chatroom | null;
   setChatroom?: Dispatch<SetStateAction<Chatroom | null>>;
@@ -17,13 +19,8 @@ interface Props {
 }
 
 export function ChatProvider({ children }: Props) {
-  const {
-    chatrooms,
-    chatroomLoading,
-    chatroom,
-    setChatroom,
-    chatroomRefetch,
-  } = useSetChatroom();
+  const { chatrooms, chatroomLoading, chatroom, setChatroom, chatroomRefetch } =
+    useSetChatroom();
 
   return (
     <ChatContext.Provider
