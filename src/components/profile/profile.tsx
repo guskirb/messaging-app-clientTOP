@@ -23,7 +23,10 @@ export default function Profile({
     <div className="profile__container">
       <img className="profile-img" src={profile.user.image} alt="" />
       {profile.user._id === auth.user._id && (
-        <ProfileImgUpload id={profile.user._id} getUserProfile={getUserProfile}/>
+        <ProfileImgUpload
+          id={profile.user._id}
+          getUserProfile={getUserProfile}
+        />
       )}
       <div className="profile-name">
         <h2>{profile.user.username}</h2>
@@ -41,6 +44,11 @@ export default function Profile({
               : "online-icon online-profile"
           }
         ></div>
+      </div>
+      <div>
+        <p>
+          <b>Join Date: </b> {profile.user.join_date_formatted}
+        </p>
       </div>
     </div>
   );

@@ -54,7 +54,7 @@ export default function ListUser({
           </p>
           <div
             className={
-              friends?.users?.some((user: User) => user._id === user._id)
+              friends?.users?.some((item: User) => item._id === user._id)
                 ? "friend-icon"
                 : ""
             }

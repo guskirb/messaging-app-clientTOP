@@ -1,12 +1,11 @@
-import { useState } from "react";
 import ChatroomModal from "./chatroom-modal";
 import ChatroomBox from "./chatroom-box";
 import useChat from "../../hooks/useChat";
 import "./chatroom-list.css";
 
-export default function ChatroomList({}) {
-  const { chatrooms, chatroomLoading, setChatroom, chatroomRefetch } = useChat();
-  const [showModal, setShowModal] = useState(false);
+export default function ChatroomList({ setShowModal, showModal }) {
+  const { chatrooms, chatroomLoading, setChatroom, chatroomRefetch } =
+    useChat();
 
   function onClick() {
     setShowModal(true);

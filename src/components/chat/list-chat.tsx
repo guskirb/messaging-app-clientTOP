@@ -74,6 +74,7 @@ export default function ListChat({
                     getUserProfile(message.user?._id);
                     setSidebar("profile");
                   }}
+                  className="chat-list-username"
                 >
                   {message.user.username}
                 </p>

@@ -12,9 +12,14 @@ import FindChat from "./find-chat";
 interface ChatProps {
   setSidebar: any;
   getUserProfile: any;
+  setShowModal: any;
 }
 
-export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
+export default memo(function Chat({
+  setSidebar,
+  getUserProfile,
+  setShowModal,
+}: ChatProps) {
   const { chatroom, chatroomLoading, chatroomRefetch } = useChat();
   const { auth } = useAuth();
   const {
@@ -65,7 +70,7 @@ export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
   }
 
   if (chatroom === null) {
-    return <FindChat />;
+    return <FindChat auth={auth} setShowModal={setShowModal} />;
   }
 
   return (
@@ -74,7 +79,7 @@ export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
         <img
           className="user-img"
           src={
-            chatroom?.users?.length === 2
+            chatroom?.users.length === 2
               ? chatroom.users.filter((user) => {
                   if (user._id !== auth?.user._id) {
                     return user;
@@ -101,7 +106,7 @@ export default memo(function Chat({ setSidebar, getUserProfile }: ChatProps) {
           chatroomRefetch={chatroomRefetch}
           messageFetch={messageFetch}
         />
-        <button>enter</button>
+        <button className="send-button"></button>
       </form>
     </div>
   );

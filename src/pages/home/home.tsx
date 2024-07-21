@@ -8,6 +8,7 @@ import "./home.css";
 export default function Home() {
   const { profile, setProfile, getUserProfile, loading } = useSetProfile();
   const [sidebar, setSidebar] = useState("chatrooms");
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="home__container">
@@ -18,8 +19,15 @@ export default function Home() {
         setSidebar={setSidebar}
         getUserProfile={getUserProfile}
         loading={loading}
+        setShowModal={setShowModal}
+        showModal={showModal}
       />
-      <Chat setSidebar={setSidebar} getUserProfile={getUserProfile}/>
+      <Chat
+        setSidebar={setSidebar}
+        getUserProfile={getUserProfile}
+        setShowModal={setShowModal}
+        showModal={showModal}
+      />
     </div>
   );
 }

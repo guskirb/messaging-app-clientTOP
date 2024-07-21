@@ -14,7 +14,7 @@ export default function Nav({
 
   return (
     <div className="nav__container">
-      <div className="logo" onClick={() => setSidebar("messages")}></div>
+      <div className="logo" onClick={() => setSidebar("chatrooms")}></div>
       <div className={"nav-middle"}>
         <div
           className={

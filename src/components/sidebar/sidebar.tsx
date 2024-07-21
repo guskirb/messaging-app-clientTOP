@@ -10,12 +10,16 @@ export default function Sidebar({
   setSidebar,
   getUserProfile,
   loading,
+  setShowModal,
+  showModal
 }: {
   content: string;
   profile: any;
   setSidebar: any;
   getUserProfile: any;
   loading: boolean;
+  setShowModal: any;
+  showModal: boolean;
 }) {
   const renderSidebar = () => {
     switch (content) {
@@ -28,7 +32,9 @@ export default function Sidebar({
           />
         );
       case "chatrooms":
-        return <ChatroomList />;
+        return (
+          <ChatroomList setShowModal={setShowModal} showModal={showModal} />
+        );
       case "friends":
         return (
           <Friends setSidebar={setSidebar} getUserProfile={getUserProfile} />

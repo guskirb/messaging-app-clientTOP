@@ -64,8 +64,8 @@
 
 .nav-button {
   background-size: contain;
-  height: 30px;
-  width: 30px;
+  height: 26px;
+  width: 26px;
   cursor: pointer;
   opacity: 0.6;
   transition: all 0.2s ease-in-out;

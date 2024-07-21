@@ -21,7 +21,7 @@ export default function ChatroomBox({
       setChatroom(chat);
     }
   }
-
+  
   return (
     <div className="chatroom__container" onClick={onClickSetChatroom}>
       <img
@@ -58,7 +58,10 @@ export default function ChatroomBox({
           </p>
           <div className={chat.pinned ? "pin-icon icon" : ""}></div>
         </div>
-        <div>
+        <div className="last-message__container">
+          {chat.message_type === "img" && (
+            <div className="recent-img"></div>
+          )}
           <p>
             {chat.last_message ? (
               chat.last_message.length > 20 ? (

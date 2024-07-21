@@ -25,6 +25,7 @@ export type Chatroom = {
   users: Array<User>;
   name?: string;
   last_message: string;
+  message_type: string;
 };
 
 export type Message = {
