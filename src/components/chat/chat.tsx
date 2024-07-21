@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import "./chat.css";
 import ImageUpload from "./image-upload";
 import FindChat from "./find-chat";
+import ChatDropdown from "./chat-dropdown";
 
 interface ChatProps {
   setSidebar: any;
@@ -20,7 +21,7 @@ export default memo(function Chat({
   getUserProfile,
   setShowModal,
 }: ChatProps) {
-  const { chatroom, chatroomLoading, chatroomRefetch } = useChat();
+  const { chatroom, chatroomLoading, setChatroom, chatroomRefetch } = useChat();
   const { auth } = useAuth();
   const {
     data: messages,
@@ -90,7 +91,13 @@ export default memo(function Chat({
           alt=""
         />
         <h2>{setName}</h2>
-        <button className="options-button">Options</button>
+        <div className="options__container">
+          <ChatDropdown
+            chatroom={chatroom!}
+            setChatroom={setChatroom}
+            chatroomRefetch={chatroomRefetch}
+          />
+        </div>
       </div>
       <ListChat
         messages={messages}
