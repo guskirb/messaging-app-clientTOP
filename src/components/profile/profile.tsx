@@ -3,6 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import "./profile.css";
 import ProfileImgUpload from "./profile-img-upload";
 import { User } from "../../types/types";
+import { useState } from "react";
+import { removeFriend, addFriend } from "../../api/user";
 
 type ProfileProps = {
   profile: {
@@ -19,9 +21,22 @@ export default function Profile({
 }: ProfileProps) {
   const { auth } = useAuth();
   const { users: friends } = useGetFriends();
+  let [currFriends, setCurrFriends] = useState(friends?.users);
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  async function onClickRemoveFriend(id: string) {
+    setCurrFriends(
+      currFriends.filter((item: User) => item._id !== profile.user._id)
+    );
+    await removeFriend(id);
+  }
+
+  async function onClickAddFriend(id: string) {
+    setCurrFriends([...currFriends, profile.user]);
+    await addFriend(id);
   }
 
   return (
@@ -37,7 +52,7 @@ export default function Profile({
         <h2>{profile.user.username}</h2>
         <div
           className={
-            friends?.users?.some((user: User) => user._id === profile.user._id)
+            currFriends.some((user: User) => user._id === profile.user._id)
               ? "friend-icon"
               : ""
           }
@@ -56,13 +71,17 @@ export default function Profile({
         </p>
       </div>
       {profile.user._id !== auth?.user._id && (
-        <div>
-          {friends?.users?.some(
-            (user: User) => user._id === profile.user._id
-          ) ? (
-            <button>Remove Friend</button>
+        <div className="button__wrapper">
+          {currFriends?.some((user: User) => user._id === profile.user._id) ? (
+            <button
+              onClick={() => onClickRemoveFriend(profile.user._id)}
+              className="remove-friend__button friend__button"
+            ></button>
           ) : (
-            <button>Add Friend</button>
+            <button
+              onClick={() => onClickAddFriend(profile.user._id)}
+              className="add-friend__button friend__button"
+            ></button>
           )}
           <button>Send Message</button>
         </div>

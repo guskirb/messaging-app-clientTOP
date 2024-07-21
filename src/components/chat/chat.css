@@ -134,6 +134,10 @@
   cursor: pointer;
 }
 
+.message-lower > .friend-icon {
+  transform: translateX(-5px) translateY(2px);
+}
+
 .chat-list-username {
   font-weight: 500;
 }
