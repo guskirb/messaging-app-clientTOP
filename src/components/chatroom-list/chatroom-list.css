@@ -65,17 +65,17 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .recent-img {
   background: url("../../assets/uploadimg.svg");
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .chat-last-active {
@@ -103,7 +103,7 @@
   background-color: red;
   width: 170px;
   position: absolute;
-  transform: translateX(180px) translateY(58%);
+  transform: translateX(170px) translateY(58%);
   border-radius: 5px;
   padding-block: 5px;
   z-index: 1;
