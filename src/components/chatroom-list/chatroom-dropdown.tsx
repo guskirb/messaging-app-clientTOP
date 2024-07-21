@@ -61,7 +61,7 @@ export default function ChatroomDropdown({
     <>
       <div
         className="more-button"
-        onClick={() => setShowDropdown(true)}
+        onClick={() => setShowDropdown(!showDropdown)}
         ref={buttonRef}
       ></div>
       {showDropdown && (

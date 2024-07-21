@@ -2,7 +2,7 @@ import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
 import useSetChatroom from "../hooks/useSetChatroom";
 import { Chatroom } from "../types/types";
 
-interface ChatContextInterface {
+export interface ChatContextInterface {
   chatrooms?: object;
   chatroomLoading?: boolean;
   chatroom?: Chatroom | null;

@@ -8,7 +8,7 @@ import {
 
 import { User } from "../types/types";
 
-interface AuthContextInterface {
+export interface AuthContextInterface {
   auth: { user: User } | null;
   setAuth: Dispatch<SetStateAction<{ user: User } | null>>;
 }
