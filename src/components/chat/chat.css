@@ -37,17 +37,41 @@
   align-items: center;
 }
 
-.chat-upper__container > .user-img {
+.chatroom-user-img {
   height: 50px;
   width: 50px;
+  border-radius: 30%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.group-chat-chatroom-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 30%;
+  background: url("../../assets/group-chat-icon.svg");
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-color: red;
 }
 
 .users-amount {
   margin-top: -2px;
 }
 
-.options__container {
+.chatroom-user-img__container {
   margin-left: auto;
+}
+
+.chatroom-user-img__container > .chatroom-user-img {
+  box-shadow: 0 0 0 3px #ffffff inset;
+  padding: 1px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: -10px;
+  cursor: pointer;
 }
 
 .options-button {

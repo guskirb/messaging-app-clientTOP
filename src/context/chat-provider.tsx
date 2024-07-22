@@ -3,16 +3,16 @@ import useSetChatroom from "../hooks/useSetChatroom";
 import { Chatroom } from "../types/types";
 
 export interface ChatContextInterface {
-  chatrooms?: {
+  chatrooms: {
     chatrooms: Array<Chatroom>;
   };
-  chatroomLoading?: boolean;
-  chatroom?: Chatroom | null;
-  setChatroom?: Dispatch<SetStateAction<Chatroom | null>>;
-  chatroomRefetch?: any;
+  chatroomLoading: boolean;
+  chatroom: Chatroom | null;
+  setChatroom: Dispatch<SetStateAction<Chatroom | null>>;
+  chatroomRefetch: any;
 }
 
-export const ChatContext = createContext<ChatContextInterface>({});
+export const ChatContext = createContext<ChatContextInterface | null>(null);
 
 interface Props {
   children?: ReactNode;

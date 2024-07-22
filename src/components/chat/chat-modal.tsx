@@ -57,7 +57,7 @@ export default function ChatModal({
     ));
 
   return (
-    <Modal setShowModal={setShowModal} title={"Add User:"}>
+    <Modal setShowModal={setShowModal} title={"Add User"}>
       {listUsers}
     </Modal>
   );

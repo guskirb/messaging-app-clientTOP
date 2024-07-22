@@ -34,19 +34,35 @@ export default function ChatroomBox({
       }
       onClick={onClickSetChatroom}
     >
-      <img
-        className="user-img"
-        src={
-          chat.users.length === 2
-            ? chat.users.filter((user) => {
+      {chat.users.length === 2 ? (
+        <>
+          <img
+            className="chat-img"
+            src={
+              chat.users.filter((user) => {
                 if (user._id !== auth?.user._id) {
                   return user;
                 }
               })[0].image
-            : "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-        }
-        alt=""
-      />
+            }
+            alt=""
+          />
+          <div
+            className={
+              chat.users.filter((user) => {
+                if (user._id !== auth?.user._id) {
+                  return user;
+                }
+              })[0].last_online_formatted !== "online"
+                ? "offline-icon offline-list"
+                : "online-icon online-list"
+            }
+          ></div>
+        </>
+      ) : (
+        <div className="group-chat-img"></div>
+      )}
+
       <div>
         <div className="chatroom-name">
           <p>

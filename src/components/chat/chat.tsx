@@ -67,6 +67,18 @@ export default memo(function Chat({
           .join(", ")
     : "Empty Room";
 
+  const userImgList = chatroom?.users.map((user) => (
+    <img
+      src={user.image}
+      alt=""
+      className="chatroom-user-img"
+      onClick={() => {
+        getUserProfile(user?._id);
+        setSidebar("profile");
+      }}
+    />
+  ));
+
   if (isLoading || chatroomLoading) {
     return <div>Loading...</div>;
   }
@@ -78,23 +90,36 @@ export default memo(function Chat({
   return (
     <div className="chat__container">
       <div className="chat-upper__container">
-        <img
-          className="user-img"
-          src={
-            chatroom?.users?.length === 2
-              ? chatroom.users.filter((user) => {
+        {chatroom?.users?.length === 2 ? (
+          <img
+            className="chatroom-user-img"
+            src={
+              chatroom.users.filter((user) => {
+                if (user._id !== auth?.user._id) {
+                  return user;
+                }
+              })[0].image
+            }
+            alt=""
+            onClick={() => {
+              getUserProfile(
+                chatroom.users.filter((user) => {
                   if (user._id !== auth?.user._id) {
                     return user;
                   }
-                })[0].image
-              : "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-          }
-          alt=""
-        />
+                })[0]._id
+              );
+              setSidebar("profile");
+            }}
+          />
+        ) : (
+          <div className="group-chat-chatroom-img"></div>
+        )}
         <div>
           <h2>{setName}</h2>
           <p className="users-amount">{chatroom?.users?.length} Members</p>
         </div>
+        <div className="chatroom-user-img__container">{userImgList}</div>
         <div className="options__container">
           <ChatDropdown
             chatroom={chatroom!}

@@ -80,6 +80,10 @@ export default function Profile({
         <p>
           <b>Join Date: </b> {profile.user.join_date_formatted}
         </p>
+        <p>
+          <b>Friends: </b>
+          {profile.user.friend_count}
+        </p>
       </div>
       {profile.user._id !== auth?.user._id && (
         <div className="button__wrapper">
@@ -94,7 +98,10 @@ export default function Profile({
               className="add-friend__button friend__button"
             ></button>
           )}
-          <button onClick={() => onClickChat(profile.user._id)}>
+          <button
+            className="send-message__button"
+            onClick={() => onClickChat(profile.user._id)}
+          >
             Send Message
           </button>
         </div>
