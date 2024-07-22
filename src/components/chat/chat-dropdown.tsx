@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { leaveChatroom } from "../../api/messages";
 import { Chatroom } from "../../types/types";
+import ChatModal from "./chat-modal";
 
 type ChatDropdownProps = {
   chatroom: Chatroom;
@@ -14,6 +15,7 @@ export default function ChatDropdown({
   chatroomRefetch,
 }: ChatDropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const buttonRef = useRef<null | HTMLDivElement>(null);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 
@@ -64,13 +66,25 @@ export default function ChatDropdown({
           onClick={stopPropagation}
         >
           <ul>
-            <li>Rename Chat<div className="edit-icon icon"></div></li>
-            <li>Add User<div className="add-user-icon icon"></div></li>
+            <li>
+              Rename Chat<div className="edit-icon icon"></div>
+            </li>
+            <li onClick={() => setShowModal(true)}>
+              Add User<div className="add-user-icon icon"></div>
+            </li>
             <li onClick={() => onClickLeave(chatroom._id)}>
               Leave<div className="leave-icon icon"></div>
             </li>
           </ul>
         </div>
+      )}
+      {showModal && (
+        <ChatModal
+          setShowModal={setShowModal}
+          chatroom={chatroom}
+          chatroomRefetch={chatroomRefetch}
+          setChatroom={setChatroom}
+        />
       )}
     </>
   );

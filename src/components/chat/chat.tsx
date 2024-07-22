@@ -9,6 +9,7 @@ import "./chat.css";
 import ImageUpload from "./image-upload";
 import FindChat from "./find-chat";
 import ChatDropdown from "./chat-dropdown";
+import { User } from "../../types/types";
 
 interface ChatProps {
   setSidebar: any;
@@ -53,16 +54,16 @@ export default memo(function Chat({
   const setName = chatroom?.users
     ? chatroom?.name
       ? chatroom.name
-      : chatroom.users.length === 1
+      : chatroom?.users?.length === 1
       ? "Empty Room"
       : chatroom.users
-          .filter((user) => {
+          .filter((user: User) => {
             if (user._id !== auth?.user._id) {
               return user;
             }
           })
           .slice(0, 3)
-          .map((user) => user.username)
+          .map((user: User) => user.username)
           .join(", ")
     : "Empty Room";
 
@@ -80,7 +81,7 @@ export default memo(function Chat({
         <img
           className="user-img"
           src={
-            chatroom?.users.length === 2
+            chatroom?.users?.length === 2
               ? chatroom.users.filter((user) => {
                   if (user._id !== auth?.user._id) {
                     return user;

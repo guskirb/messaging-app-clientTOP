@@ -7,12 +7,12 @@ export interface ChatContextInterface {
     chatrooms: Array<Chatroom>;
   };
   chatroomLoading?: boolean;
-  chatroom: Chatroom | null;
-  setChatroom: Dispatch<SetStateAction<Chatroom | null>>;
+  chatroom?: Chatroom | null;
+  setChatroom?: Dispatch<SetStateAction<Chatroom | null>>;
   chatroomRefetch?: any;
 }
 
-export const ChatContext = createContext<ChatContextInterface | null>(null);
+export const ChatContext = createContext<ChatContextInterface>({});
 
 interface Props {
   children?: ReactNode;
