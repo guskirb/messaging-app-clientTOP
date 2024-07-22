@@ -64,8 +64,8 @@ export default function ChatDropdown({
           onClick={stopPropagation}
         >
           <ul>
-            <li>Rename Chat</li>
-            <li>Add User</li>
+            <li>Rename Chat<div className="edit-icon icon"></div></li>
+            <li>Add User<div className="add-user-icon icon"></div></li>
             <li onClick={() => onClickLeave(chatroom._id)}>
               Leave<div className="leave-icon icon"></div>
             </li>

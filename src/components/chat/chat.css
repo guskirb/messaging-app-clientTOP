@@ -88,6 +88,18 @@
   gap: 20px;
 }
 
+.edit-icon {
+  background: url("../../assets/edit-black.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.add-user-icon {
+  background: url("../../assets/add-user.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .message__container {
   display: flex;
   flex-flow: column;
