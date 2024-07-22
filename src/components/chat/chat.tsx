@@ -90,7 +90,10 @@ export default memo(function Chat({
           }
           alt=""
         />
-        <h2>{setName}</h2>
+        <div>
+          <h2>{setName}</h2>
+          <p className="users-amount">{chatroom?.users?.length} Members</p>
+        </div>
         <div className="options__container">
           <ChatDropdown
             chatroom={chatroom!}

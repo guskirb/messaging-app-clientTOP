@@ -50,10 +50,18 @@
   background-color: rgb(218, 218, 218);
 }
 
+.active_chatroom {
+  background-color: rgb(218, 218, 218);
+}
+
 .chatroom-name {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.chatroom-name > p {
+ font-weight: 500;
 }
 
 .chatroom-name > .pin-icon {

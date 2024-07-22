@@ -6,12 +6,14 @@ import "./chatroom-list.css";
 
 type ChatroomBoxProps = {
   chat: Chatroom;
+  chatroom: Chatroom;
   setChatroom: any;
   chatroomRefetch: any;
 };
 
 export default function ChatroomBox({
   chat,
+  chatroom,
   setChatroom,
   chatroomRefetch,
 }: ChatroomBoxProps) {
@@ -24,7 +26,14 @@ export default function ChatroomBox({
   }
 
   return (
-    <div className="chatroom__container" onClick={onClickSetChatroom}>
+    <div
+      className={
+        chat?._id === chatroom?._id
+          ? "chatroom__container active_chatroom"
+          : "chatroom__container"
+      }
+      onClick={onClickSetChatroom}
+    >
       <img
         className="user-img"
         src={
@@ -41,21 +50,19 @@ export default function ChatroomBox({
       <div>
         <div className="chatroom-name">
           <p>
-            <b>
-              {chat?.name
-                ? chat.name
-                : chat?.users.length === 1
-                ? "Empty Room"
-                : chat.users
-                    .filter((user) => {
-                      if (user._id !== auth?.user._id) {
-                        return user;
-                      }
-                    })
-                    .slice(0, 3)
-                    .map((user) => user.username)
-                    .join(", ")}
-            </b>
+            {chat?.name
+              ? chat.name
+              : chat?.users.length === 1
+              ? "Empty Room"
+              : chat.users
+                  .filter((user) => {
+                    if (user._id !== auth?.user._id) {
+                      return user;
+                    }
+                  })
+                  .slice(0, 3)
+                  .map((user) => user.username)
+                  .join(", ")}
           </p>
           <div className={chat.pinned ? "pin-icon icon" : ""}></div>
         </div>

@@ -42,6 +42,10 @@
   width: 50px;
 }
 
+.users-amount {
+  margin-top: -2px;
+}
+
 .options__container {
   margin-left: auto;
 }

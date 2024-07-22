@@ -12,7 +12,7 @@ export default function ChatroomList({
   setShowModal,
   showModal,
 }: ChatroomListProps) {
-  const { chatrooms, chatroomLoading, setChatroom, chatroomRefetch } =
+  const { chatrooms, chatroomLoading, chatroom, setChatroom, chatroomRefetch } =
     useChat();
 
   function onClick() {
@@ -32,6 +32,7 @@ export default function ChatroomList({
     .map((chat) => (
       <ChatroomBox
         chat={chat}
+        chatroom={chatroom!}
         setChatroom={setChatroom}
         chatroomRefetch={chatroomRefetch}
         key={chat._id}
@@ -43,6 +44,7 @@ export default function ChatroomList({
     .map((chat) => (
       <ChatroomBox
         chat={chat}
+        chatroom={chatroom!}
         setChatroom={setChatroom}
         chatroomRefetch={chatroomRefetch}
         key={chat._id}
