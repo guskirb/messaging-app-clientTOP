@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { addFriend, removeFriend } from "../../api/user";
+import { createChatroom } from "../../api/messages";
 import { User } from "../../types/types";
+import useChat from "../../hooks/useChat";
 
 type ListUserDropdownProps = {
   user: User;
@@ -15,9 +17,19 @@ export default function ListUserDropdown({
   friends,
   refetch,
 }: ListUserDropdownProps) {
+  const { setChatroom, chatroomRefetch } = useChat();
   const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  async function onClickChat(id: string) {
+    setShowDropdown(false);
+    let response = await createChatroom({ user: id });
+    if (response?.success) {
+      chatroomRefetch();
+      setChatroom(response.chatroom);
+    }
+  }
 
   async function onClickAdd(id: string) {
     setShowDropdown(false);
@@ -85,6 +97,7 @@ export default function ListUserDropdown({
                 }
               ></div>
             </li>
+            <li onClick={() => onClickChat(user._id)}>Message</li>
           </ul>
         </div>
       )}

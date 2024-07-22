@@ -5,6 +5,8 @@ import ProfileImgUpload from "./profile-img-upload";
 import { User } from "../../types/types";
 import { useState } from "react";
 import { removeFriend, addFriend } from "../../api/user";
+import { createChatroom } from "../../api/messages";
+import useChat from "../../hooks/useChat";
 
 type ProfileProps = {
   profile: {
@@ -21,10 +23,19 @@ export default function Profile({
 }: ProfileProps) {
   const { auth } = useAuth();
   const { users: friends } = useGetFriends();
+  const { setChatroom, chatroomRefetch } = useChat();
   let [currFriends, setCurrFriends] = useState(friends?.users);
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  async function onClickChat(id: string) {
+    let response = await createChatroom({ user: id });
+    if (response?.success) {
+      chatroomRefetch();
+      setChatroom(response.chatroom);
+    }
   }
 
   async function onClickRemoveFriend(id: string) {
@@ -52,7 +63,7 @@ export default function Profile({
         <h2>{profile.user.username}</h2>
         <div
           className={
-            currFriends.some((user: User) => user._id === profile.user._id)
+            currFriends?.some((user: User) => user._id === profile.user._id)
               ? "friend-icon"
               : ""
           }
@@ -83,7 +94,9 @@ export default function Profile({
               className="add-friend__button friend__button"
             ></button>
           )}
-          <button>Send Message</button>
+          <button onClick={() => onClickChat(profile.user._id)}>
+            Send Message
+          </button>
         </div>
       )}
     </div>

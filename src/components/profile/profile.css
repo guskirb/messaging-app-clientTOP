@@ -54,12 +54,12 @@
 
 .add-friend__button {
   background: url("../../assets/friend.svg");
-  background-color: red;
+  background-color: rgb(0, 255, 149);
 }
 
 .remove-friend__button {
   background: url("../../assets/remove-friend.svg");
-  background-color: red;
+  background-color: rgb(253, 24, 24);
 }
 
 .friend__button {

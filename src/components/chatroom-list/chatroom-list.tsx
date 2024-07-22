@@ -56,7 +56,6 @@ export default function ChatroomList({
           setShowModal={setShowModal}
           chatroomRefetch={chatroomRefetch}
           setChatroom={setChatroom}
-          chatrooms={chatrooms}
         />
       )}
 
@@ -71,14 +70,20 @@ export default function ChatroomList({
           placeholder="Search Messages"
         />
       </div>
-      <div className="pinned-chatrooms">
-        <h3>Pinned</h3>
-      </div>
-      <div className="list-messages__container">{listPinnedChatrooms}</div>
-      <div className="recent-chatrooms">
-        <h3>Recent</h3>
-      </div>
-      <div className="list-messages__container">{listChatrooms}</div>
+      {chatrooms?.chatrooms.length === 0 ? (
+        <button onClick={onClick}>Start a Chat</button>
+      ) : (
+        <>
+          <div className="pinned-chatrooms">
+            <h3>Pinned</h3>
+          </div>
+          <div className="list-messages__container">{listPinnedChatrooms}</div>
+          <div className="recent-chatrooms">
+            <h3>Recent</h3>
+          </div>
+          <div className="list-messages__container">{listChatrooms}</div>
+        </>
+      )}
     </div>
   );
 }

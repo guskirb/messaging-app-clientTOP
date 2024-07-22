@@ -32,7 +32,6 @@ export default function ChatroomModal({
     let response = await createChatroom({ user: id });
     if (response?.success) {
       chatroomRefetch();
-      console.log(response);
       setChatroom(response.chatroom);
     }
   }
