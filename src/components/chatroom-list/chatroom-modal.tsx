@@ -1,8 +1,9 @@
 import useGetFriends from "../../hooks/useGetFriends";
 import { createChatroom } from "../../api/messages";
 import React from "react";
-import "./chatroom-list.css";
+import Modal from "../modal/modal";
 import { User } from "../../types/types";
+import "./chatroom-list.css";
 
 type ChatroomModalProps = {
   setShowModal: any;
@@ -64,16 +65,8 @@ export default function ChatroomModal({
   ));
 
   return (
-    <div className="modal__background" onClick={closeModal}>
-      <div className="modal__container">
-        <div className="modal__upper">
-          <h2>New Chat</h2>
-          <button className="modal__button" onClick={closeModal}>
-            Close
-          </button>
-        </div>
-        {listUsers}
-      </div>
-    </div>
+    <Modal setShowModal={setShowModal} title={"New Chat"}>
+      {listUsers}
+    </Modal>
   );
 }
