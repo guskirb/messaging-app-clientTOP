@@ -69,6 +69,7 @@ export default memo(function Chat({
 
   const userImgList = chatroom?.users.map((user) => (
     <img
+      key={user._id}
       src={user.image}
       alt=""
       className="chatroom-user-img"

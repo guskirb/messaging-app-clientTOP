@@ -28,8 +28,8 @@ export default function NameModal({
     let response = await editChatroomName(chatroom._id, {
       name: chatName,
     });
-    console.log(response);
-    if (response.true) {
+    
+    if (response.success) {
       chatroomRefetch();
       setChatroom(response.chatroom);
     }

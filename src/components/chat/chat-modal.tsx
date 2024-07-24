@@ -21,7 +21,8 @@ export default function ChatModal({
   async function onClickAdd(id: string, data: string) {
     setShowModal(false);
     let response = await addToChatroom(id, { user: data });
-    if (response?.success) {
+
+    if (response.success) {
       chatroomRefetch();
       setChatroom(response.chatroom);
     }
