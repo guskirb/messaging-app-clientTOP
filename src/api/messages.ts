@@ -63,3 +63,10 @@ export const postImgMessage = async (id: string, data: any) => {
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };
+
+export const editChatroomName = async(id: string, data: any) => {
+  return axios
+  .post(`/chatrooms/${id}/name`, data)
+  .then((response) => response.data)
+  .catch((error) => error.response.data);
+}

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { leaveChatroom } from "../../api/messages";
 import { Chatroom } from "../../types/types";
 import ChatModal from "./chat-modal";
+import NameModal from "./name-modal";
 
 type ChatDropdownProps = {
   chatroom: Chatroom;
@@ -15,7 +16,8 @@ export default function ChatDropdown({
   chatroomRefetch,
 }: ChatDropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showNameModal, setShowNameModal] = useState(false);
   const buttonRef = useRef<null | HTMLDivElement>(null);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 
@@ -66,10 +68,10 @@ export default function ChatDropdown({
           onClick={stopPropagation}
         >
           <ul>
-            <li>
+            <li onClick={() => setShowNameModal(true)}>
               Rename Chat<div className="edit-icon icon"></div>
             </li>
-            <li onClick={() => setShowModal(true)}>
+            <li onClick={() => setShowAddModal(true)}>
               Add User<div className="add-user-icon icon"></div>
             </li>
             <li onClick={() => onClickLeave(chatroom._id)}>
@@ -78,9 +80,17 @@ export default function ChatDropdown({
           </ul>
         </div>
       )}
-      {showModal && (
+      {showAddModal && (
         <ChatModal
-          setShowModal={setShowModal}
+          setShowModal={setShowAddModal}
+          chatroom={chatroom}
+          chatroomRefetch={chatroomRefetch}
+          setChatroom={setChatroom}
+        />
+      )}
+      {showNameModal && (
+        <NameModal
+          setShowModal={setShowNameModal}
           chatroom={chatroom}
           chatroomRefetch={chatroomRefetch}
           setChatroom={setChatroom}

@@ -123,6 +123,12 @@
   background-color: #f5f5f5;
 }
 
+.edit-name-form {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
 .edit-icon {
   background: url("../../assets/edit-black.svg");
   background-size: contain;
