@@ -10,6 +10,7 @@ import ImageUpload from "./image-upload";
 import FindChat from "./find-chat";
 import ChatDropdown from "./chat-dropdown";
 import { User } from "../../types/types";
+import Loader from "../loader/loader";
 
 interface ChatProps {
   setSidebar: any;
@@ -81,7 +82,7 @@ export default memo(function Chat({
   ));
 
   if (isLoading || chatroomLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (chatroom === null) {

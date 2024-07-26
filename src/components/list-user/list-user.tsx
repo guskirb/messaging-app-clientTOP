@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useGetFriends from "../../hooks/useGetFriends";
 import "./list-user.css";
 import { User } from "../../types/types";
+import Loader from "../loader/loader";
 
 type ListUserProps = {
   setSidebar: any;
@@ -23,7 +24,7 @@ export default function ListUser({
   const { users: friends, refetch } = useGetFriends();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const listUsers = users?.users.map((user) => (

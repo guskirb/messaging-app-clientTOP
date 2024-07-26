@@ -3,6 +3,7 @@ import { getSelf } from "../../api/user";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import { logOut } from "../../api/user";
+import Loader from "../loader/loader";
 
 export default function PersistLogin() {
   const { setAuth }: any = useAuth();
@@ -24,7 +25,7 @@ export default function PersistLogin() {
   }, []);
 
   if (loading) {
-    return <>Loading...</>;
+    return <Loader />;
   }
 
   return <Outlet />;

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { removeFriend, addFriend } from "../../api/user";
 import { createChatroom } from "../../api/messages";
 import useChat from "../../hooks/useChat";
+import Loader from "../loader/loader";
 
 type ProfileProps = {
   profile: {
@@ -27,7 +28,7 @@ export default function Profile({
   let [currFriends, setCurrFriends] = useState(friends?.users);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   async function onClickChat(id: string) {

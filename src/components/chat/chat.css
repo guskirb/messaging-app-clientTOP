@@ -60,7 +60,7 @@
   background-position: center;
   background-size: 70%;
   background-repeat: no-repeat;
-  background-color: #8ebfee;
+  background-color: #5da9f0;
 }
 
 .users-amount {
@@ -251,7 +251,7 @@
 
 .user-me > .message-box {
   margin-right: 52px;
-  background-color: #edf5fc;
+  background-color: #e9f5ff;
   color: rgb(41, 41, 41);
   border-radius: 15px 15px 0 15px;
 }

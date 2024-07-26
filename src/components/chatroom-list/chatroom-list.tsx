@@ -2,6 +2,7 @@ import ChatroomModal from "./chatroom-modal";
 import ChatroomBox from "./chatroom-box";
 import useChat from "../../hooks/useChat";
 import "./chatroom-list.css";
+import Loader from "../loader/loader";
 
 type ChatroomListProps = {
   setShowModal: any;
@@ -20,12 +21,8 @@ export default function ChatroomList({
   }
 
   if (chatroomLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
-
-  // if (chatrooms.chatrooms.length === 0){
-  //   return <p>No Chats</p>
-  // }
 
   const listChatrooms = chatrooms?.chatrooms
     .filter((item) => item.pinned === false)

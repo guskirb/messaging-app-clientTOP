@@ -1,5 +1,6 @@
 import ListUser from "../list-user/list-user";
 import useGetFriends from "../../hooks/useGetFriends";
+import Loader from "../loader/loader";
 
 type FriendsProps = {
   setSidebar: any;
@@ -10,7 +11,7 @@ export default function Friends({ setSidebar, getUserProfile }: FriendsProps) {
   const { users, isLoading } = useGetFriends();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (

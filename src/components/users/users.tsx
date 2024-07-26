@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllUsers } from "../../api/user";
 import ListUser from "../list-user/list-user";
+import Loader from "../loader/loader";
 
 type UserProps = {
   setSidebar: any;
@@ -14,7 +15,7 @@ export default function Users({ setSidebar, getUserProfile }: UserProps) {
   });
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (
