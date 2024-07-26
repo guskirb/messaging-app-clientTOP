@@ -1,9 +1,31 @@
 .auth__container {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   width: 100%;
   height: 100%;
+  background-image: linear-gradient(to bottom right, #6ab7ff, #2394fd);
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.app-title > h1 {
+  font-size: 2em;
+  color: white;
+  font-weight: 500;
+}
+
+.logo__icon {
+  background: url("../../assets/logo.svg");
+  background-size: contain;
+  height: 50px;
+  width: 50px;
 }
 
 .auth__container > form {
@@ -12,10 +34,12 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
-  border: 1px solid #d1d1d1;
   padding: 50px;
   border-radius: 10px;
   width: 350px;
+  background-color: white;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
 .auth__container > form > div {
@@ -40,7 +64,6 @@ input:not(:placeholder-shown) + .form-label {
 .form-input {
   height: 25px;
   border-radius: 5px;
-  border: 1px solid #d1d1d1;
   padding-block: 5px;
   padding-inline: 10px;
 }

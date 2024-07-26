@@ -49,6 +49,10 @@ export default function SignUp() {
 
   return (
     <div className="auth__container">
+      <div className="app-title">
+        <div className="logo__icon"></div>
+        <h1>Chat App</h1>
+      </div>
       <form action="" method="POST" onSubmit={handleSubmit(onSubmit)}>
         <h2>Sign Up</h2>
         <div>

@@ -44,6 +44,10 @@ export default function Login() {
 
   return (
     <div className="auth__container">
+      <div className="app-title">
+        <div className="logo__icon"></div>
+        <h1>Chat!</h1>
+      </div>
       <form action="" method="POST" onSubmit={handleSubmit(onSubmit)}>
         <h2>Log In</h2>
         <div>
