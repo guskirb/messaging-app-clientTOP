@@ -39,9 +39,9 @@
   position: absolute;
   height: 30px;
   width: 30px;
-  background-color: #0084ff;
+  background-color: #2394fd;
   border-radius: 50%;
-  transform: translateY(5px) translateX(40px);
+  transform: translateY(-5px) translateX(42px);
   cursor: pointer;
   border: 2px solid white;
 }

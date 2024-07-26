@@ -31,12 +31,12 @@
 }
 
 .chat-upper__container {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   padding: 20px;
   display: flex;
   gap: 20px;
   align-items: center;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #eeeeee;
 }
 
 .chatroom-user-img {
@@ -209,8 +209,8 @@
   box-sizing: border-box;
   margin-top: auto;
   gap: 20px;
-  border: 1px solid rgb(224, 224, 224);
   background-color: white;
+  border: 1px solid #eeeeee;
 }
 
 .input__container > input {
@@ -269,7 +269,7 @@
 }
 
 .line {
-  border-top: solid 1px #f1f1f1;
+  border-top: solid 1px #eeeeee;
   width: 100%;
 }
 

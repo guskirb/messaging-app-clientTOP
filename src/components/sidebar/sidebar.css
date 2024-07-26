@@ -1,5 +1,5 @@
 .sidebar__container {
-    background-color: rgb(235, 235, 235);
+    background-color: #eeeeee;
     min-width: 400px;
     height: 100%;
     box-sizing: border-box;
@@ -7,4 +7,5 @@
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }

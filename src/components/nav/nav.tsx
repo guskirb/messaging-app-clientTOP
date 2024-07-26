@@ -1,3 +1,4 @@
+import { logOut } from "../../api/user";
 import useAuth from "../../hooks/useAuth";
 import "./nav.css";
 
@@ -8,7 +9,7 @@ type NavProps = {
 };
 
 export default function Nav({ sidebar, setSidebar, setProfile }: NavProps) {
-  const { auth }: any = useAuth();
+  const { setAuth, auth }: any = useAuth();
 
   return (
     <div className="nav__container">
@@ -51,7 +52,13 @@ export default function Nav({ sidebar, setSidebar, setProfile }: NavProps) {
         ></div>
       </div>
       <div className="nav-lower">
-        <div className="settings-button nav-button"></div>
+        <div
+          className="sign-out-button nav-button"
+          onClick={() => {
+            logOut();
+            setAuth(null);
+          }}
+        ></div>
         <img
           className="nav__profile-img"
           src={auth?.user?.image}

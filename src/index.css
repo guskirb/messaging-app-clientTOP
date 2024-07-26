@@ -68,6 +68,10 @@ input {
   padding-inline: 10px;
 }
 
+input:focus {
+ outline: 1px solid #2394fd;
+}
+
 .online-icon {
   height: 8px;
   width: 8px;

@@ -149,7 +149,7 @@
   padding-block: 5px;
   padding-inline: 10px;
   gap: 20px;
-  color: black;
+  color: #213547;
 }
 
 .dropdown__container > ul > li:hover {
