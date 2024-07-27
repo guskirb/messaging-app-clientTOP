@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import useAuth from "../../hooks/useAuth";
 import { logIn, setLocalStorage } from "../../api/user";
 import "./auth.css";
+import Loader from "../../components/loader/loader";
 
 const schema = z.object({
   username: z.string().min(1, { message: "Username/Email is required" }),
@@ -41,6 +42,10 @@ export default function Login() {
       });
     }
   };
+
+  if (isSubmitting) {
+    return <Loader />;
+  }
 
   return (
     <div className="auth__container">

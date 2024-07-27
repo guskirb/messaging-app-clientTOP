@@ -3,6 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../../api/user";
+import Loader from "../../components/loader/loader";
 
 const schema = z
   .object({
@@ -46,6 +47,10 @@ export default function SignUp() {
       });
     }
   };
+
+  if (isSubmitting) {
+    return <Loader />;
+  }
 
   return (
     <div className="auth__container">

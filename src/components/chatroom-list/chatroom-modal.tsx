@@ -3,6 +3,7 @@ import { createChatroom } from "../../api/messages";
 import Modal from "../modal/modal";
 import { User } from "../../types/types";
 import "./chatroom-list.css";
+import Loader from "../loader/loader";
 
 type ChatroomModalProps = {
   setShowModal: any;
@@ -52,6 +53,10 @@ export default function ChatroomModal({
       </div>
     </div>
   ));
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <Modal setShowModal={setShowModal} title={"New Chat"}>

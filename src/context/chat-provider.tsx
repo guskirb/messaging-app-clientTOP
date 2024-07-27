@@ -12,7 +12,7 @@ export interface ChatContextInterface {
   chatroomRefetch: any;
 }
 
-export const ChatContext = createContext<ChatContextInterface | null>(null);
+export const ChatContext = createContext<ChatContextInterface | any>(null);
 
 interface Props {
   children?: ReactNode;

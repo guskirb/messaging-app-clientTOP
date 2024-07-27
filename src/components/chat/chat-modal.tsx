@@ -2,6 +2,7 @@ import Modal from "../modal/modal";
 import useGetFriends from "../../hooks/useGetFriends";
 import { Chatroom, User } from "../../types/types";
 import { addToChatroom } from "../../api/messages";
+import Loader from "../loader/loader";
 
 type ChatModalProps = {
   setShowModal: any;
@@ -56,6 +57,10 @@ export default function ChatModal({
         </div>
       </div>
     ));
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <Modal setShowModal={setShowModal} title={"Add User"}>
