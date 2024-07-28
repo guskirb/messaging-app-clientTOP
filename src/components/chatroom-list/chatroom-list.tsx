@@ -3,6 +3,8 @@ import ChatroomBox from "./chatroom-box";
 import useChat from "../../hooks/useChat";
 import "./chatroom-list.css";
 import Loader from "../loader/loader";
+import { useEffect, useState } from "react";
+import { Chatroom } from "../../types/types";
 
 type ChatroomListProps = {
   setShowModal: any;
@@ -15,16 +17,44 @@ export default function ChatroomList({
 }: ChatroomListProps) {
   const { chatrooms, chatroomLoading, chatroom, setChatroom, chatroomRefetch } =
     useChat();
+  const [chatroomList, setChatroomList] = useState({
+    chatrooms: [] as Array<Chatroom>,
+  });
+
+  useEffect(() => {
+    setChatroomList(chatrooms);
+  }, [chatrooms]);
 
   function onClick() {
     setShowModal(true);
+  }
+
+  function filterChatroom(e: React.ChangeEvent<HTMLInputElement>) {
+    setChatroomList({
+      ...chatrooms,
+      chatrooms: chatrooms.chatrooms.filter((chat: Chatroom) => {
+        if (chat.name) {
+          if (chat.name.toLowerCase().includes(e.target.value.toLowerCase())) {
+            return true;
+          }
+        } else {
+          if (
+            chat.users.find((item) =>
+              item.username.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          ) {
+            return true;
+          }
+        }
+      }),
+    });
   }
 
   if (chatroomLoading) {
     return <Loader />;
   }
 
-  const listChatrooms = chatrooms?.chatrooms
+  const listChatrooms = chatroomList?.chatrooms
     .filter((item) => item.pinned === false)
     .map((chat) => (
       <ChatroomBox
@@ -36,7 +66,7 @@ export default function ChatroomList({
       />
     ));
 
-  const listPinnedChatrooms = chatrooms?.chatrooms
+  const listPinnedChatrooms = chatroomList?.chatrooms
     .filter((item) => item.pinned === true)
     .map((chat) => (
       <ChatroomBox
@@ -67,6 +97,7 @@ export default function ChatroomList({
           className="chatrooms-search"
           type="text"
           placeholder="Search Messages"
+          onChange={filterChatroom}
         />
       </div>
       {chatrooms?.chatrooms.length === 0 ? (
