@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllUsers } from "../../api/user";
 import ListUser from "../list-user/list-user";
 import Loader from "../loader/loader";
+import React, { useState, useEffect } from "react";
+import { User } from "../../types/types";
 
 type UserProps = {
   setSidebar: any;
@@ -13,6 +15,20 @@ export default function Users({ setSidebar, getUserProfile }: UserProps) {
     queryKey: ["users"],
     queryFn: getAllUsers,
   });
+  const [userList, setUserList] = useState({ users: [] });
+
+  useEffect(() => {
+    setUserList(users);
+  }, [users]);
+
+  function filterUsers(e: React.ChangeEvent<HTMLInputElement>) {
+    setUserList({
+      ...users,
+      users: users.users.filter((user: User) =>
+        user.username.toLowerCase().includes(e.target.value.toLowerCase())
+      ),
+    });
+  }
 
   if (isLoading) {
     return <Loader />;
@@ -26,12 +42,13 @@ export default function Users({ setSidebar, getUserProfile }: UserProps) {
           className="messages-search"
           type="text"
           placeholder="Search Users"
+          onChange={filterUsers}
         />
       </div>
       <ListUser
         setSidebar={setSidebar}
         getUserProfile={getUserProfile}
-        users={users}
+        users={userList}
         isLoading={isLoading}
       />
     </div>
