@@ -33,3 +33,18 @@
 .modal__container input {
   background-color: white;
 }
+
+.modal__container::-webkit-scrollbar-track {
+  background: #eeeeee;
+  margin-block: 0.5em;
+}
+
+.modal__container::-webkit-scrollbar-thumb {
+  background: #dadada;
+  border-radius: 100vw;
+  border: 0.25em solid #eeeeee;
+}
+
+.modal__container::-webkit-scrollbar-thumb:hover {
+  background: #c7c7c7;
+}

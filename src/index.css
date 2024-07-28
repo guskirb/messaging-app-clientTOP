@@ -114,6 +114,25 @@ input:focus {
   width: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 1.1em;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+  margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2394fd;
+  border-radius: 100vw;
+  border: 0.25em solid white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #077ff0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
