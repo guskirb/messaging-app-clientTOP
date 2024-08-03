@@ -68,6 +68,11 @@ input:not(:placeholder-shown) + .form-label {
   padding-inline: 10px;
 }
 
+.button-wrapper {
+  display: flex;
+  gap: 5px;
+}
+
 .button-wrapper > .error-message {
   transform: translateX(90px) translateY(45px);
 }

@@ -43,6 +43,17 @@ export default function Login() {
     }
   };
 
+  const onClickGuest = async () => {
+    const user = await logIn({
+      username: "guest",
+      password: "password",
+    });
+
+    setLocalStorage(user);
+    setAuth(user.user);
+    window.location.href = "/";
+  };
+
   if (isSubmitting) {
     return <Loader />;
   }
@@ -89,6 +100,9 @@ export default function Login() {
         </div>
         <div className="button-wrapper">
           <button>Log In</button>
+          <button type="button" onClick={onClickGuest}>
+            Continue as Guest
+          </button>
           {errors.root && (
             <span className="error-message">{errors.root.message}</span>
           )}
