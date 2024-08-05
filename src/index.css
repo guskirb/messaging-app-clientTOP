@@ -80,6 +80,7 @@ input {
   padding-block: 5px;
   padding-inline: 10px;
   background-color: #f3f3f3;
+  color: #213547;
 }
 
 input:focus {
