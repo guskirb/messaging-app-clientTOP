@@ -53,7 +53,16 @@ export default function ListChat({
             className={message.user?._id === auth?.user._id ? "user-me" : ""}
           >
             <div className="message-box">
-              {message.message && <p>{message.message}</p>}
+              {message.message && (
+                <p>
+                  {
+                    new DOMParser().parseFromString(
+                      message.message,
+                      "text/html"
+                    ).documentElement.textContent
+                  }
+                </p>
+              )}
               {message.image && (
                 <img src={message.image} alt="" className="message-img" />
               )}
@@ -83,7 +92,9 @@ export default function ListChat({
                 </p>
                 <div
                   className={
-                    friends?.users?.some((item: User) => item._id === message.user._id)
+                    friends?.users?.some(
+                      (item: User) => item._id === message.user._id
+                    )
                       ? "friend-icon"
                       : ""
                   }
