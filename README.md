@@ -1,5 +1,5 @@
 # Messaging Application Client
-This is the frontend of the messaging application.
+This is the frontend of the messaging application. A React Typescript website that allows the user to create chatrooms and message other users.
 ## Links
 * [Live Demo](https://chat-app-guskirb.netlify.app/) (It may take a moment to load due to the API host wake up time.)
 * [Backend Repository](https://github.com/guskirb/messaging-app-apiTOP)
